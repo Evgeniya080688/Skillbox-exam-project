@@ -17,14 +17,14 @@ export const authenticationUnsplash = (unsplash) => {
     location.assign(authenticationUrl); // Перенапревление на авторизацию в unsplash
 }
 
-export const​ ​code​ ​=​ location.search.​split(​ 'code='​ )[​1​]; 
+export const code = location.search.split( 'code=' )[1]; 
 
 export const getToken = (unsplash, code) => {
     if (code) {
         return unsplash.auth.userAuthentication(code)
             .then(res => res.json())
             .then(json => {
-                unsplash.auth.​setBearerToken​ (json.access_token);
+                unsplash.auth.setBearerToken(json.access_token);
                 //unsplash.photos.​ likePhoto​ (​ "kBJEJqWNtNY"​ );
         });
     }
