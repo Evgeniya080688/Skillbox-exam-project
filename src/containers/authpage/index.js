@@ -5,7 +5,8 @@ import { authenticationUnsplash, unsplash, getToken, code } from '../../auth/uns
 const UnregisterPage = () => {
     return (
 	    <div>
-	        <button onClick={ev=>{authenticationUnsplash(unsplash); getToken(unsplash, code)}}>Авторизация</button>
+	    	<h1>Войдите в систему</h1>
+	        <button onClick={ev=>{authenticationUnsplash(unsplash)}}>Авторизация</button>
 	    </div>
     )
 }

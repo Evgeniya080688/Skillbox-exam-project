@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
+import './index.css';
 
 const Header = () => {
-	<h1> My Unplush Apps </h1>
+	return (		
+		<header className="main-header">
+
+		</header>	
+	)		
 };
 
 export default Header;

@@ -1,3 +1,3 @@
-export const REMOVE_COMMENT = "REMOVE_COMMENT";
-export const ADD_NEW_COMMENT = "ADD_NEW_COMMENT";
-export const CHANGE_EL_FORM = "CHANGE_EL_FORM";
+export const ADD_LIKE = "ADD_LIKE";
+export const OPEN_PICTURE = "OPEN_PICTURE";
+export const COME_BACK_LIST = "COME_BACK_LIST";

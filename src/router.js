@@ -4,14 +4,41 @@ import { connect } from 'react-redux';
 import { getToken, unsplash } from './auth/unsplash';
 import PhotoApp from './containers/homepage/index';
 import UnregisterPage from './containers/authpage/index';
+import Header from './components/header/index.js';
+import { Switch, Route } from 'react-router-dom';
+//import { getCookie, setCookie } from './helpers';
 
-import { Switch, Route } from 'react-router-dom'
+let App = () => { 
+	const code = location.search.split( 'code=' )[1]; 
+	
+	// <main> 
+	//     <Switch>
+	//       <Route exact path='/' component={UnregisterPage}/>
+	//       <Route path='/auth' component={PhotoApp}/>
+	//     </Switch>
+	// </main>   
+	
+	if (code) {
+        return unsplash.auth.userAuthentication(code)
+            .then(res => res.json())
+            .then(json => {
+                unsplash.auth.setBearerToken(json.access_token);
+                //unsplash.photos.​ likePhoto​ (​ "kBJEJqWNtNY"​ );
+                return (
+                	<div>
+                		<Header />
+            			<Route path='/auth' component={PhotoApp}/>
+            		</div>	
+                )
+        });
+    }
+    else {
+    	return <div>
+        	<Header />
+        	<UnregisterPage />
+       </div>;
+    }  
+	
+}
 
-let Main = () => (  
-    <Switch>
-      <Route exact path='/' component={PhotoApp}/>
-      <Route path='/auth' component={UnregisterPage}/>
-    </Switch>
-)
-
-export default Main;
+export default App;

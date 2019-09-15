@@ -9,10 +9,8 @@ import css from './index.css';
 let PhotoApp = ( props ) => {
 
 	return (
-		<div>
-			<h1>Unplash App</h1>
-			<UnregisterPage />	
-
+		<div>			
+			<h1>Здесь будет лента фото</h1>
 		</div>	
 	)
 }

@@ -1,9 +1,9 @@
-import { createId, getDate } from './utils.js';
+//import { createId, getDate } from './utils.js';
 
 
-export const removeComment = ( id ) => {
+export const addLike = ( id ) => {
 	return {
-		type: 'REMOVE_COMMENT',
+		type: 'ADD_LIKE',
 		payload: id
 	}
 }
