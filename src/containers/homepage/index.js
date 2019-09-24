@@ -1,29 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import UnregisterPage from '../authpage/index.js';
-import { unsplash, getToken } from '../../auth/unsplash';
-import Header from '../../components/header/index.js';
+import PhotoList from '../../components/photos/PhotoList';
 
 import css from './index.css';
 
 let PhotoApp = ( props ) => {
+	const { photos } = props;
 
 	return (
-		<div>			
-			<h1>Здесь будет лента фото</h1>
-		</div>	
+		<main className="main-listphoto">			
+			<h1>Лента фото</h1>	
+			<PhotoList photos = { photos }/>		
+		</main>	
 	)
 }
 
 const mapStateToProps = ( state ) => {	
+	const { userInfo, photos } = state;
 	return {
-		state: state,
+		userInfo,
+		photos
 	}
 }
 
 const mapDispatchToProps = ( dispatch ) => {
 	return {
-
+		
 	}
 }
 

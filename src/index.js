@@ -4,9 +4,8 @@ import { render } from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import store from "./store/index.js";
-import UnregisterPage from './containers/authpage/index.js';
 import App from './router.js';
-import Header from './components/header/index.js';
+import PhotoApp from './containers/homepage/index';
 
 render(
 	<Provider store={store}>

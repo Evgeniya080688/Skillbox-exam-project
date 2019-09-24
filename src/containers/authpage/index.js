@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import './index.css';
-import { authenticationUnsplash, unsplash, getToken, code } from '../../auth/unsplash';
+import { authenticationUnsplash, unsplash, getToken, code } from '../../api/unsplash';
 
 const UnregisterPage = () => {
     return (
-	    <div>
+	    <main className="main-auth">
 	    	<h1>Войдите в систему</h1>
-	        <button onClick={ev=>{authenticationUnsplash(unsplash)}}>Авторизация</button>
-	    </div>
+	        <button className="btn btn__auth" onClick={ev=>{authenticationUnsplash(unsplash)}}>Авторизация</button>
+	    </main>
     )
 }
 

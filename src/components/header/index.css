@@ -1,5 +1,24 @@
 .main-header {
-	min-height: 1em;
-	background-color: black;
+	min-height: 3em;
+	background-color: rgb(199, 21, 133);
 	color: white;
+	padding: 0;
+	margin: 0;
+}
+
+.nav-logo__img {
+	color: white;
+}
+
+.main-nav {
+	width: 98%;
+	display: flex;
+	justify-content: space-between;
+	padding: 0.5em;
+}
+
+.nav-author {
+	cursor: pointer;
+	color: white;
+	text-decoration: none;
 }
