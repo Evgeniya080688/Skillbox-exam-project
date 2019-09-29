@@ -5,8 +5,7 @@ import Photo from './Photo';
 
 const PhotoCard = (props) => {
 	const { id, url, description, likes, user, date  } = props;
-	return (
-		<div>		
+	return (	
 			<figure className="photo-card">
 			    
 		        <Photo src={ url } description={ description } />
@@ -16,14 +15,7 @@ const PhotoCard = (props) => {
 			    	<span>дата {date}</span>
 			    	<span>{ likes }</span>
 			    </figcaption>
-		   	</figure>	
-		   	<button
-	            type="button"
-	            className="btn like-btn"            
-	          >
-	            Нравится
-		    </button>		
-		</div>    
+		   	</figure>
 	);
 }
 

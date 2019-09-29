@@ -9,7 +9,13 @@ let PhotoView = ( props ) => {
 
 	return (
 		<main className="main-photo-card">				
-			<PhotoCard id = { id }/>		
+			<PhotoCard id = { id }/>
+			<button
+	            type="button"
+	            className="btn like-btn"            
+	          >
+	            Нравится
+		    </button>			
 		</main>	
 	)
 }
