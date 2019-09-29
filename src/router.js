@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getToken, unsplash } from './api/unsplash';
 import PhotoApp from './containers/homepage/index';
 import UnregisterPage from './containers/authpage/index';
+import PhotoCard from './containers/photoview/index';
 import Header from './components/header/index.js';
 import { Switch, Route } from 'react-router-dom';
 import './style.css';
@@ -33,6 +34,7 @@ let App = ( props ) => {
     	return <div>
         	<Header userInfo = {userInfo}/>
         	<PhotoApp photos={photos} />
+        	<PhotoCard />
         	<UnregisterPage />
        </div>;
     }  

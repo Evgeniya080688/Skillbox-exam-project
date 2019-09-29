@@ -21,7 +21,7 @@ const Header = ( props ) => {
 		        		<a href="#">Профиль</a>
 		        	</li>
 		        	<li className="nav-links__item">
-		        		<a href="#"> Выход</a>
+		        		<a href="#">Выход</a>
 		        	</li>
 		       	</ul> 	
 	      	</nav>

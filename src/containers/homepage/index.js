@@ -29,6 +29,7 @@ const mapDispatchToProps = ( dispatch ) => {
 	}
 }
 
+
 PhotoApp = connect(
 	mapStateToProps,
 	mapDispatchToProps

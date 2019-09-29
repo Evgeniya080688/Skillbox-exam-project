@@ -9,7 +9,6 @@
     "global": "^4.4.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-masonry-component": "^6.2.1",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
     "redux": "^4.0.4",
