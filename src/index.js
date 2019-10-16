@@ -5,14 +5,20 @@ import { Provider } from "react-redux";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import store from "./store/index.js";
 import App from './router.js';
-import PhotoApp from './containers/homepage/index';
+
+// import { createStore, applyMiddleware } from 'redux'
+// import thunk from 'redux-thunk'
+
+import reducers from './reducers'
+
+// const store = createStore(reducers, applyMiddleware(thunk))
 
 render(
 	<Provider store={store}>
-	  	<Router>
+    	<Router>
 	  		<Route exact path="*" render={ (ev)=><App routeLocation={ev} /> } />
 	  	</Router>
-	</Provider>,
+  	</Provider>,
 	document.getElementById("app")
 );
 

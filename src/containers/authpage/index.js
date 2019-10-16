@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './index.css';
-import { authenticationUnsplash, unsplash, getToken, code } from '../../api/unsplash';
+import { authenticationUnsplash, unsplash, code } from '../../api/unsplash';
 
-const UnregisterPage = () => {
+const Auth  = () => {
     return (
 	    <main className="main-auth">
 	    	<h1>Войдите в систему</h1>
@@ -11,4 +11,5 @@ const UnregisterPage = () => {
     )
 }
 
-export default UnregisterPage;
+export default Auth ;
+

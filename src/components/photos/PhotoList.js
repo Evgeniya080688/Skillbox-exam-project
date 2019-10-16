@@ -1,7 +1,8 @@
 import './index.css';
 import React from 'react';
 import { unsplash } from '../../api/unsplash';
-import PhotoItem from './PhotoItem';
+import PhotoCard from './PhotoCard';
+import { connect } from 'react-redux';
 
 let PhotoList = (props) => {
   const { photos } = props;  
@@ -11,18 +12,15 @@ let PhotoList = (props) => {
     <ul className="photos__list photos-list">
       {
         photos.map((photo) => {
-          const { id, url, description, likes, user, date } = photo;
+          const { id } = photo;
           return (
-            <PhotoItem  
-              key = { id }
-              url = { url }
-              description = { description }
-              likes = { likes }
-              user = { user }
-              date = { date }           
-          /> 
-          )
-        })
+            <PhotoCard 
+              key={id} 
+              photo={photo} 
+            />
+            )
+          }
+        )
       }
     </ul>
 
@@ -38,6 +36,27 @@ let PhotoList = (props) => {
   </div> 
   )
 }
+
+
+
+const mapStateToProps = state => {
+  return {
+    photos: state.photoList.photos,
+    currentPage: state.photoList.currentPage,
+    token: state.auth.token
+  }
+}
+
+const mapDispatchToProps = ( dispatch ) => {
+  return {
+    
+  }
+}
+
+PhotoList = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PhotoList);
 
 export default PhotoList;
 

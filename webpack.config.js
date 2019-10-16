@@ -6,11 +6,12 @@ const OptimizeCSSPlugin = require('cssnano');
 const argv = require('yargs').argv;
 const isDevelopment = argv.mode === 'development';
 const isProduction = !isDevelopment;
+require("babel-polyfill");
 
 module.exports = {
 	mode: 'production',
 	entry: {
-		main: './src/index.js'
+		main: ['babel-polyfill', './src/index.js']
 	},		
 	output: {
 		path: path.resolve(__dirname, 'build'),

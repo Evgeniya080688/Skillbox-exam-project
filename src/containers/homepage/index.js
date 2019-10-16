@@ -4,7 +4,7 @@ import PhotoList from '../../components/photos/PhotoList';
 
 import css from './index.css';
 
-let PhotoApp = ( props ) => {
+let Home = ( props ) => {
 	const { photos } = props;
 
 	return (
@@ -30,9 +30,9 @@ const mapDispatchToProps = ( dispatch ) => {
 }
 
 
-PhotoApp = connect(
+Home = connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(PhotoApp);
+)(Home);
 
-export default PhotoApp;
+export default Home;

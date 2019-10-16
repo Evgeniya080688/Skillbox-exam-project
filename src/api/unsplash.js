@@ -18,6 +18,11 @@ export const authenticationUnsplash = (unsplash) => {
     location.assign(authenticationUrl); // Перенапревление на авторизацию в unsplash
 }
 
+export const authenticationUrl = unsplash.auth.getAuthenticationUrl([
+  'public',
+  'write_likes',
+])
+
 export const code = location.search.split( 'code=' )[1]; 
 
 export const getToken = (unsplash, code) => {
