@@ -1,18 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Photo from '../../components/photos/Photo';
 
-import css from './index.css';
+let PhotoView = ( { match, history, photos, token } ) => {
+	const photo = photos.filter(photo => photo.id === match.params.id)[0]
 
-let PhotoView = ( { id, photos } ) => {
-	const photo = photos.filter(photo => photo.id === id)[0]
-
-	const { updated_at, user, urls, descripton } = photo
+	const { updated_at, user, urls, location, likes } = photo
 
 	return (
-		<main className="main-photo-view view">
-			<div class="view-picture">
-				<Photo src={urls.regular} descripton={descripton} />
+		<div>
+			<div class="view-picture">				
+				<img alt={location} src={urls.regular} />
 			</div>		
 			<div class="view-info">
 				<span>
@@ -20,7 +17,7 @@ let PhotoView = ( { id, photos } ) => {
               		<a href={user.links.html}>{user.name}</a> on
               		<a href="https://unsplash.com/">&nbsp;Unsplash</a>
 				</span>
-		    	<span>дата {date}</span>
+		    	<span>дата {updated_at}</span>
 		    	<span>{ likes }</span>
 			</div>	
 			
@@ -37,7 +34,7 @@ let PhotoView = ( { id, photos } ) => {
 	          >
 	            Назад
 		    </button>			
-		</main>	
+		</div>	
 	)
 }
 

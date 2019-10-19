@@ -1,6 +1,6 @@
 import './index.css';
 import React from 'react';
-import { unsplash } from '../../api/unsplash';
+
 import PhotoCard from './PhotoCard';
 import { connect } from 'react-redux';
 
@@ -14,10 +14,12 @@ let PhotoList = (props) => {
         photos.map((photo) => {
           const { id } = photo;
           return (
-            <PhotoCard 
-              key={id} 
-              photo={photo} 
-            />
+            <li className="photos-list__item photo-item">
+              <PhotoCard 
+                key={id} 
+                photo={photo} 
+              />
+            </li>
             )
           }
         )
