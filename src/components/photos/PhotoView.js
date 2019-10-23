@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 
 let PhotoView = ( { match, history, photos, token } ) => {
 	const photo = photos.filter(photo => photo.id === match.params.id)[0]
@@ -7,7 +8,7 @@ let PhotoView = ( { match, history, photos, token } ) => {
 	const { updated_at, user, urls, location, likes } = photo
 
 	return (
-		<div>
+		<React.Fragment>
 			<div class="view-picture">				
 				<img alt={location} src={urls.regular} />
 			</div>		
@@ -24,17 +25,17 @@ let PhotoView = ( { match, history, photos, token } ) => {
 			<button
 	            type="button"
 	            className="btn like-btn"            
-	          >
+	        >
 	            Нравится
 		    </button>
 
 		    <button
 	            type="button"
 	            className="btn like-btn"            
-	          >
-	            Назад
+	        >
+	            <Link to='/photos'>Back</Link>
 		    </button>			
-		</div>	
+		</React.Fragment>
 	)
 }
 

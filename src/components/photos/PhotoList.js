@@ -8,34 +8,22 @@ let PhotoList = (props) => {
   const { photos } = props;  
 
   return (
-  <div className="photos"> 
-    <ul className="photos__list photos-list">
-      {
-        photos.map((photo) => {
-          const { id } = photo;
-          return (
-            <li className="photos-list__item photo-item">
-              <PhotoCard 
-                key={id} 
-                photo={photo} 
-              />
-            </li>
-            )
-          }
-        )
-      }
-    </ul>
-
-    <div className="photos__loadmore loadmore">
-          <button
-            type="button"
-            className="btn loadmore-btn"
-            
-          >
-            Загрузить еще
-          </button>
-    </div>
-  </div> 
+      <ul className="photos__list photos-list">
+        {
+          photos.map((photo) => {
+            const { id } = photo;
+            return (
+              <li className="photos-list__item photo-item">
+                <PhotoCard 
+                  key={id} 
+                  photo={photo} 
+                />
+              </li>
+              )
+            }
+          )
+        }
+      </ul>
   )
 }
 

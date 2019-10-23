@@ -8,7 +8,7 @@ const PhotoCard = ({photo}) => {
 
 	return (			
 		<figure className="photo-item__image">
-		    <Link to={{ pathname: `/photo/${id}` }}>
+		    <Link to={{ pathname: `/photos/${id}` }}>
 	         	<img alt={description} src={urls.thumb} />
 	        </Link>
 		    <figcaption className="photo-item__caption">

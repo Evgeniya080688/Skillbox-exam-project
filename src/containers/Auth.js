@@ -3,10 +3,10 @@ import { authenticationUnsplash, unsplash, code } from '../mocks/api/unsplash';
 
 const Auth  = () => {
     return (
-	    <div>
+	    <React.Fragment>
 	    	<h1>Войдите в систему</h1>
 	        <button className="btn btn__auth" onClick={ev=>{authenticationUnsplash(unsplash)}}>Авторизация</button>
-	    </div>
+	    </React.Fragment>
     )
 }
 
