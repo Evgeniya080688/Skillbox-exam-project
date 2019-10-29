@@ -27,27 +27,6 @@ let PhotoList = (props) => {
   )
 }
 
-
-
-const mapStateToProps = state => {
-  return {
-    photos: state.photoList.photos,
-    currentPage: state.photoList.currentPage,
-    token: state.auth.token
-  }
-}
-
-const mapDispatchToProps = ( dispatch ) => {
-  return {
-    
-  }
-}
-
-PhotoList = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PhotoList);
-
 export default PhotoList;
 
 

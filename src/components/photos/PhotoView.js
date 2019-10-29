@@ -23,11 +23,12 @@ let PhotoView = ( { match, history, photos, token } ) => {
 			</div>	
 			
 			<button
-	            type="button"
-	            className="btn like-btn"            
-	        >
-	            Нравится
-		    </button>
+                type="button"
+                className="btn btn-like"
+                onClick = { () => {}}			                
+            >
+                like
+            </button>
 
 		    <button
 	            type="button"

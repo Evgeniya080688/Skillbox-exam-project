@@ -3,7 +3,6 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 
 import PhotoList from '../components/photos/PhotoList';
-import PhotoView from '../components/photos/PhotoView';
 
 let Home = ( props ) => {
 	const { photos } = props;
@@ -11,7 +10,7 @@ let Home = ( props ) => {
 	return (
     	<React.Fragment>
 		    <div className="photos"> 	        	
-		    	<PhotoList />	     
+		    	<PhotoList photos = { photos } />	     
 
 		        <div className="photos__loadmore loadmore">
 			            <button
@@ -28,11 +27,12 @@ let Home = ( props ) => {
 
 
 
-const mapStateToProps = ( state ) => {	
-	const { photos } = state;
-	return {
-		photos
-	}
+const mapStateToProps = state => {
+  return {
+    photos: state.photoList.photos,
+    currentPage: state.photoList.currentPage,
+    token: state.auth.token
+  }
 }
 
 const mapDispatchToProps = ( dispatch ) => {

@@ -16,7 +16,13 @@ const PhotoCard = ({photo}) => {
         			<a href={user.links.html}>{user.name}</a> on
         			<a href="https://unsplash.com/">&nbsp;Unsplash</a></span>
 		    	<span>{updated_at}</span>
-		    	<span>{ likes }</span>
+		    	<button
+	                type="button"
+	                className="btn btn-like"
+	                onClick = { () => {}}			                
+	            >
+	                like
+	            </button>
 		    </figcaption>
 	   	</figure>	
 	);
