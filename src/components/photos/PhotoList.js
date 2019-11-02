@@ -1,7 +1,7 @@
 import './index.css';
 import React from 'react';
 
-import PhotoCard from './PhotoCard';
+import PhotoItem from './PhotoItem';
 import { connect } from 'react-redux';
 
 let PhotoList = (props) => {
@@ -14,7 +14,7 @@ let PhotoList = (props) => {
             const { id } = photo;
             return (
               <li className="photos-list__item photo-item">
-                <PhotoCard 
+                <PhotoItem 
                   key={id} 
                   photo={photo} 
                 />

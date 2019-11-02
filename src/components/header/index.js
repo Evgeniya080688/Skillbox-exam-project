@@ -12,7 +12,7 @@ const Header = ( props ) => {
 	return (
 			<header className="main-header">
 				<Logo />
-		        <Form />
+		        <Form token = { token }/>
 			</header>
 	);
 			

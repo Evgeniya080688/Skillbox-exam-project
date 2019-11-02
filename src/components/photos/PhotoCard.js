@@ -4,27 +4,24 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 const PhotoCard = ({photo}) => {
-	const { id, urls, description, likes, user, updated_at } = photo;
+
+	const { updated_at, user, urls, location, likes } = photo
 
 	return (			
-		<figure className="photo-item__image">
-		    <Link to={{ pathname: `/photos/${id}` }}>
-	         	<img alt={description} src={urls.thumb} />
-	        </Link>
-		    <figcaption className="photo-item__caption">
-		    	<span> Photo by&nbsp;
-        			<a href={user.links.html}>{user.name}</a> on
-        			<a href="https://unsplash.com/">&nbsp;Unsplash</a></span>
-		    	<span>{updated_at}</span>
-		    	<button
-	                type="button"
-	                className="btn btn-like"
-	                onClick = { () => {}}			                
-	            >
-	                like
-	            </button>
-		    </figcaption>
-	   	</figure>	
+		<React.Fragment>
+			<div class="view-picture">				
+				<img alt={location} src={urls.regular} />
+			</div>		
+			<div class="view-info">
+				<span>
+					photo by&nbsp;
+              		<a href={user.links.html}>{user.name}</a> on
+              		<a href="https://unsplash.com/">&nbsp;Unsplash</a>
+				</span>
+		    	<span>дата {updated_at}</span>
+		    	<span>{ likes }</span>
+			</div>	
+		</React.Fragment>	
 	);
 }
 

@@ -3,23 +3,16 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 
 import PhotoList from '../components/photos/PhotoList';
+import LoadMore from '../components/buttons/LoadMore';
 
-let Home = ( props ) => {
+let Photos = ( props ) => {
 	const { photos } = props;
 	
 	return (
     	<React.Fragment>
 		    <div className="photos"> 	        	
-		    	<PhotoList photos = { photos } />	     
-
-		        <div className="photos__loadmore loadmore">
-			            <button
-			                type="button"
-			                className="btn loadmore-btn"			                
-			            >
-			                Загрузить еще
-			            </button>
-		        </div>
+		    	<PhotoList photos = { photos } /> 
+		        <LoadMore />
 	      	</div> 
      	</React.Fragment>    
 	)
@@ -42,9 +35,9 @@ const mapDispatchToProps = ( dispatch ) => {
 }
 
 
-Home = connect(
+Photos = connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(Home);
+)(Photos);
 
-export default Home;
+export default Photos;

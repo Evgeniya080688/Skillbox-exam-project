@@ -11,7 +11,7 @@ const Form = ( props ) => {
 
 	if (token) {
 		return (		        
-	    	<AuthForm />
+	    	<AuthForm token = { token } />
     	)				      	      	
 	}
 	else {
