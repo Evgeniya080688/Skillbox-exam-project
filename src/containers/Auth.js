@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { Route, Redirect } from 'react-router-dom'
+
 import { authenticationUnsplash, unsplash, code } from '../mocks/api/unsplash';
+import { unsplashAuth } from '../mocks/actions/index.js';
 
 const Auth  = () => {
     return (
@@ -10,5 +14,14 @@ const Auth  = () => {
     )
 }
 
-export default Auth ;
+const mapStateToProps = state => {
+  return { isAuthorzated: state.isAuthorzated }
+}
+
+export default connect(
+  mapStateToProps,
+  { unsplashAuth }
+)(Auth)
+
+
 

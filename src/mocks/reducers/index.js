@@ -1,15 +1,13 @@
-import { ADD_LIKE, OPEN_PICTURE, COME_BACK_LIST } from "../constants/action-types";
+import { AUTH, AUTH_SUCSESS, GET_PHOTOS, LOAD_MORE_PHOTOS } from "../constants/action-types";
 
+const INITIAL_STATE = {
+  isAuthorizated: "false",
+}
 
-const  reducer = ( state = {}, action ) => {
-
+const reducer = ( state = {}, action ) => {
 	switch (action.type) {
-		case ADD_LIKE:
-    		return {
-			    state
-			}
-
-    		
+		case AUTH:    		
+			return { ...state, isAuthorizated: 'true' }		   		
     	default:
      		return state;
 	}
@@ -17,4 +15,7 @@ const  reducer = ( state = {}, action ) => {
 }
 
 export default reducer;
+
+
+
 

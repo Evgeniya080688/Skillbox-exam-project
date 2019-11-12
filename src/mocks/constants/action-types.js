@@ -1,3 +1,4 @@
-export const ADD_LIKE = "ADD_LIKE";
-export const OPEN_PICTURE = "OPEN_PICTURE";
-export const COME_BACK_LIST = "COME_BACK_LIST";
+export const AUTH = "AUTH";
+export const GET_PHOTOS = "GET_PHOTOS";
+export const LOAD_MORE_PHOTOS = "LOAD_MORE_PHOTOS";
+export const AUTH_SUCSESS = "AUTH_SUCSESS"

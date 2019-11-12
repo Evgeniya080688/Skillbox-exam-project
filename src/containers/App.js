@@ -5,21 +5,19 @@ import Header from '../components/header/index.js';
 import Main from '../components/main/index.js';
 
 let App = (props) => {
-	const { token } = props;
+	const { isAuthorizated } = props;
 
 	return (
 		<React.Fragment>
-		    <Header token = { token }/>
-		    <Main token = { token }/>
+		    <Header isAuthorizated = { isAuthorizated }/>
+		    <Main isAuthorizated = { isAuthorizated }/>
 		</React.Fragment>
 		)	
 }
 
 const mapStateToProps = state => {
   return {
-    photos: state.photoList.photos,
-    currentPage: state.photoList.currentPage,
-    token: state.auth.token
+    isAuthorizated: state.isAuthorizated
   }
 }
 

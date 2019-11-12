@@ -1,8 +1,3 @@
-
-function createId() {
-	return "" + Math.random().toString(36).substr(2, 9);
-}
-
 function getDate() {
 	const nowDate = new Date();
 	const dayToday = nowDate.getDate();
@@ -17,4 +12,4 @@ function isEmptyString(text){
 	return result;
 }
 
-export {createId, getDate, isEmptyString};	
+export {getDate, isEmptyString};	

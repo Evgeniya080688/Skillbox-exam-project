@@ -8,3 +8,18 @@ export const unsplashAuth = code => async dispatch => {
     payload: response,
   })
 }
+
+
+// export const unsplashAuth = ( code ) => {
+// 	const response = unsplash.auth.userAuthentication(code).then(toJson)
+// 	return {
+// 		type: 'AUTH',
+// 		payload: code
+// 	}
+// }
+
+// export const getData = () => {
+//   return { 
+//   	type: "DATA_REQUESTED" 
+//   }
+// }

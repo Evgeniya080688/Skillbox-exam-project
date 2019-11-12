@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './index.css';
 
-const AuthForm = ( props ) => {
-	const { token } = props;
+const AuthForm = () => {
 
 	return (		        
     	<React.Fragment>
