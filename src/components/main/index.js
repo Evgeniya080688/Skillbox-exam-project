@@ -1,38 +1,47 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux';
+import { Switch, Route, Redirect } from 'react-router-dom';
+
+import { unsplash, code, authenticationUnsplash } from '../../api/unsplash';
+import { getToken } from '../../actions';
 
 import Photos from '../../containers/Photos';
 import Auth from '../../containers/Auth';
 import PageNotFound from '../../containers/PageNotFound';
 import PhotoView from '../../containers/PhotoView'
 
-const Main = (props) => {
-	//const code = location.search.split( 'code=' )[1]; 
-	//const token = 'bae45466393d679eec4668dce80dc5f26dcf46220adef7c681ea053a2ef9a81f';  
-	const { isAuthorizated } = props;
+const Main = (props) => {  
+	const { token } = props;
 
-	if (isAuthorizated == 'false') {
+	if (token == undefined) {
      	return (
      		<main>
-		     	<Route exact path="/" component={ Auth } / >
+     			<Switch>
+		     		<Route exact path="/" component={ Auth } / >
+		     		<Route component={ PageNotFound } />		     		
+		     	</Switch>
 		    </main> 	
 	    )
     } else {
 	    return (
 	    	<main>
-		    	<Switch>
+		    	<Switch>		    		
 		     		{/*<Route exact path="/">
 			        	<Redirect to="/photos" />
 			     	</Route>
+
 		     		<Route exact path="/photos" component={ Photos } />
 		     		<Route path="/photos/:id" component={ PhotoView } />*/}
+		     		<Route exact path="/">
+			        	<Redirect to="/auth" />
+			     	</Route>
 		     		<Route path="/auth" component={ PageNotFound } />
+		     		<Route component={ PageNotFound } />
 		    	</Switch>
 	    	</main>
 	    )
 
     } 
 }
-
 
 export default Main;

@@ -7,12 +7,12 @@ import Logo from './logo.js';
 import './index.css';
 
 const Header = ( props ) => {
-	const { isAuthorizated } = props;
+	const { token } = props;
 	
 	return (
 			<header className="main-header">
 				<Logo />
-		        <Form isAuthorizated = { isAuthorizated }/>
+		        <Form token = { token }/>
 			</header>
 	);
 			

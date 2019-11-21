@@ -1,32 +1,27 @@
 import { takeEvery, call, put } from "redux-saga/effects";
-import unsplash from '../mocks/api/unsplash';
+import { unsplash } from '../api/unsplash';
 
 export default function* watcherSaga() {
-  yield takeEvery("DATA_REQUESTED", workerSaga);
+  yield takeEvery("AUTH", workerSaga);
 }
 
 function* workerSaga() {
   try {
-    const payload = yield call(getPhotos);
-    yield put({ type: "DATA_LOADED", payload });
+    const payload = yield call(getToken(unsplash, code));
+    yield put({ type: "TOKEN_LOADED", payload });
   } catch (e) {
     yield put({ type: "API_ERRORED", payload: e });
   }
 }
 
-function getData() {
-  return fetch("https://jsonplaceholder.typicode.com/posts").then(response =>
-    response.json()
-  );
+function getToken(unsplash, code) {
+    if (code) {
+        return unsplash.auth.userAuthentication(code)
+            .then(res => res.json())
+            .then(json => {
+                unsplash.auth.setBearerToken(json.access_token);
+                //unsplash.photos.likePhoto​(​ "kBJEJqWNtNY"​ );
+        });
+    }
 }
 
-export const getPhotos = (unsplash, start = 1, end = 15) => {
-    return (
-      unsplash.photos.listPhotos(start, end, 'latest')
-        .then(res => res.text())
-        .then(res => {
-            if (res != "Rate Limit Exceeded" && !JSON.parse(res).errors) { return JSON.parse(res); }
-            else { console.error("Лимит запросов исчерпан!"); }
-        })
-    )
-}

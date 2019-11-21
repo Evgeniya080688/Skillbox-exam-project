@@ -1,8 +1,10 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import reducer from '../reducers/index.js';
-import { checkCodeMiddleware } from "../../middleware";
+import { checkCodeMiddleware } from "../middleware";
 import createSagaMiddleware from "redux-saga";
-import apiSaga from "../../sagas/apiSaga";
+
+import apiSaga from "../sagas/apiSaga";
+import getPhotosSaga from "../sagas/getPhotosSaga";
 
 const photos = [
 	{
@@ -117,10 +119,10 @@ const photos = [
 ];
 
 
-const photoList = {
-	currentPage: 1,
-	photos: photos
-};
+// const photoList = {
+// 	currentPage: 1,
+// 	photos: photos
+// };
 
 // const initialState = {
 // 	auth: { token: "bae45466393d679eec4668dce80dc5f26dcf46220adef7c681ea053a2ef9a81f"}, 
@@ -129,16 +131,18 @@ const photoList = {
 
 const initialiseSagaMiddleware = createSagaMiddleware();
 
-const initialState = { 
-	isAuthorizated: 'false'
-}
+const storeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
-	reducer, 
-	initialState
+  reducer,
+  storeEnhancers(
+    applyMiddleware(initialiseSagaMiddleware)
+  )
 );
 
-//initialiseSagaMiddleware.run(apiSaga);
+
+initialiseSagaMiddleware.run(apiSaga);
+//initialiseSagaMiddleware.run(getPhotosSaga);
 
 export default store;
 

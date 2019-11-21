@@ -1,5 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSPlugin = require('cssnano');
 
@@ -15,12 +16,15 @@ module.exports = {
 	},		
 	output: {
 		path: path.resolve(__dirname, 'build'),
-		filename: 'bundle.js'
+		filename: 'bundle.js',
+		chunkFilename: '[name].bundle.js'
   	},
-  	optimization: {
-	    splitChunks: {
-	      chunks: 'all'
-	    }
+	devServer: {
+	    contentBase: path.join(__dirname, "src"),
+	    compress: true,
+	    port: 8080,
+	    watchContentBase: true,
+	    progress: true
 	},
  	module: {
 	  	rules: [
@@ -41,10 +45,10 @@ module.exports = {
 			          loader: 'postcss-loader',
 			          options: {
 			            plugins: [
-			              isProduction ? require('cssnano') : () => {},
-			              require('autoprefixer')({
-			                overrideBrowserslist: ['last 2 versions']
-			              })
+				            isProduction ? require('cssnano') : () => {},
+				            require('autoprefixer')({
+				                overrideBrowserslist: ['last 2 versions']
+				            })
 			            ]
 			          }
 			        }
@@ -54,7 +58,8 @@ module.exports = {
 			    test: /\.(png|jpg|gif|svg)$/,
 			    loader: 'file-loader',
 			    options: {
-			        name: '[path][name].[ext]',
+			        //name: '[path][name].[ext]',
+			        name: '[name].[ext]',
 				}
 			}	
 	  	]
@@ -64,6 +69,9 @@ module.exports = {
 	      	filename: '[name].css',
       		chunkFilename: '[id].css',
 	    }),
+	    new HtmlWebpackPlugin({
+	      	template: "./src/index.html"
+	    })
 	    //require('cssnano')({ preset: 'default' })
   	],
     optimization: {

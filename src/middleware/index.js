@@ -1,4 +1,4 @@
-import { AUTH } from "../mocks/constants/action-types";
+import { AUTH } from "../constants/action-types";
 
 const code = window.location.search.split('code=')[1]
 
@@ -8,7 +8,8 @@ export function checkCodeMiddleware({ dispatch }) {
       // do your stuff
       if (action.type === AUTH) {      
         if (code) {
-          return dispatch({ type: "AUTH_SUCSESS" });
+          
+          return dispatch({ type: "DATA_LOADED" });
         }
       }
       return next(action);

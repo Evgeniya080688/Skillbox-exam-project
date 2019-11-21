@@ -20,6 +20,13 @@ const PhotoCard = ({photo}) => {
 				</span>
 		    	<span>дата {updated_at}</span>
 		    	<span>{ likes }</span>
+		    	<button
+	                type="button"
+	                className="btn btn-like"
+	                onClick = { () => {}}			                
+	            >
+	                like
+	            </button>
 			</div>	
 		</React.Fragment>	
 	);
