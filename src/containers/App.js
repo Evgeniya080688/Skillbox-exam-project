@@ -1,11 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { getToken } from '../actions/index'
 import { unsplash, code } from '../api/unsplash'
 
 import Header from '../components/header/index.js';
 import Main from '../components/main/index.js';
+
+import Auth from './Auth';
+import PageNotFound from './PageNotFound';
 
 class App extends React.Component {
 
@@ -17,29 +21,14 @@ class App extends React.Component {
 	render() {
 		return (
 		<React.Fragment>
-		    <Header token = { this.props.token }/>
-		    <Main token = { this.props.token }/>
+		    <Header code = { code }/>
+		    <Main code = { code }/>
 		</React.Fragment>
 		)
+		
 	}
 
 }  
-
-// let App = (props) => {
-// 	const { isAuthorizated } = props;
-
-// 	componentDidMount() {
-// 	    this.props.unsplashAuth(code)
-// 	    unsplash.auth.setBearerToken(this.props.token)
-// 	  }
-
-// 	return (
-// 		<React.Fragment>
-// 		    <Header isAuthorizated = { isAuthorizated }/>
-// 		    <Main isAuthorizated = { isAuthorizated }/>
-// 		</React.Fragment>
-// 		)	
-// }
 
 const mapStateToProps = state => {
   return {

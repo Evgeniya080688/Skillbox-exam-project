@@ -13,17 +13,8 @@ import PhotoView from '../../containers/PhotoView'
 const Main = (props) => {  
 	const { token } = props;
 
-	if (token == undefined) {
-     	return (
-     		<main>
-     			<Switch>
-		     		<Route exact path="/" component={ Auth } / >
-		     		<Route component={ PageNotFound } />		     		
-		     	</Switch>
-		    </main> 	
-	    )
-    } else {
-	    return (
+	if (code) {
+		return (
 	    	<main>
 		    	<Switch>		    		
 		     		{/*<Route exact path="/">
@@ -39,6 +30,17 @@ const Main = (props) => {
 		     		<Route component={ PageNotFound } />
 		    	</Switch>
 	    	</main>
+	    )
+     	
+    } else {
+	    return (
+     		<main>
+     			<Switch>
+		     		<Route exact path="/" component={ Auth } / >
+		     		<Route path="/auth" component={ PageNotFound } />
+		     		<Route component={ PageNotFound } />		     		
+		     	</Switch>
+		    </main> 	
 	    )
 
     } 
