@@ -1,6 +1,6 @@
 import { takeEvery, call, put } from "redux-saga/effects";
 
-export default function* watcherSaga() {
+export default function* watcherSagaListPhotos() {
   yield takeEvery("GET_PHOTOS", workerSaga);
 }
 

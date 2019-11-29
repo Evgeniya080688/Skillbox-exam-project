@@ -17,16 +17,16 @@ const Main = (props) => {
 		return (
 	    	<main>
 		    	<Switch>		    		
-		     		{/*<Route exact path="/">
+		     		<Route exact path="/">
 			        	<Redirect to="/photos" />
 			     	</Route>
 
 		     		<Route exact path="/photos" component={ Photos } />
-		     		<Route path="/photos/:id" component={ PhotoView } />*/}
-		     		<Route exact path="/">
+		     		<Route path="/photos/:id" component={ PhotoView } />
+		     		{/*<Route exact path="/">
 			        	<Redirect to="/auth" />
 			     	</Route>
-		     		<Route path="/auth" component={ PageNotFound } />
+		     		<Route path="/auth" component={ PageNotFound } />*/}
 		     		<Route component={ PageNotFound } />
 		    	</Switch>
 	    	</main>
@@ -37,7 +37,9 @@ const Main = (props) => {
      		<main>
      			<Switch>
 		     		<Route exact path="/" component={ Auth } / >
-		     		<Route path="/auth" component={ PageNotFound } />
+		     		<Route path="/auth">
+			        	<Redirect to="/" />
+			     	</Route>
 		     		<Route component={ PageNotFound } />		     		
 		     	</Switch>
 		    </main> 	

@@ -61,7 +61,11 @@ module.exports = {
 			        //name: '[path][name].[ext]',
 			        name: '[name].[ext]',
 				}
-			}	
+			},
+			{
+		        test: /\.less$/,
+		        loader: 'less-loader', // compiles Less to CSS
+		    }	
 	  	]
  	},
   	plugins: [

@@ -2,17 +2,16 @@ import { AUTH, AUTH_SUCSESS, GET_PHOTOS, LOAD_MORE_PHOTOS } from "../constants/a
 
 const initialState = {
 	token: null,
-  	photoList: [],
-  	currentPage: 1,
-  	isAuth: false
+  	photos: [],
+  	currentPage: 1
 };
 
 const reducer = ( state = initialState, action ) => {
 	switch (action.type) {
-		case "TOKEN_LOADED":
-			return { ...state, token: action.payload.access_token, isAuth: true}	
+		case "TOKEN_LOADED":  
+			return { ...state, token: action.payload.access_token}	
 		case "PHOTOS_LOADED":
-			return { ...state, photoList: action.payload }   		
+			return { ...state, photos: action.payload }   		
     	default:
      		return state;
 	}

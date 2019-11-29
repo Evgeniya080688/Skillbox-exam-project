@@ -3,26 +3,29 @@ import { Link } from 'react-router-dom';
 
 import './index.css';
 
-const AuthForm = () => {
+const AuthForm = (props) => {
+	const { token } = props;
 
 	return (		        
     	<React.Fragment>
-        	<Link to={{ pathname: `/` }}>
-    			<span>Пользователь1</span>
-        	</Link>
+    		<div className="auth-form">
+	        	<Link to={{ pathname: `/` }}>
+	    			<span className="auth-form__name">{ token }</span>
+	        	</Link>
 
-	        <ul className="main-nav__links nav-links">
-	        	<li className="nav-links__item">
-	        		<Link to={{ pathname: `/` }}>
-	        			<span>Профиль</span>
-	        		</Link>
-	        	</li>
-	        	<li className="nav-links__item">
-	        		<Link to={{ pathname: `/auth` }}>
-	        			<span>Выход</span>
-	        		</Link>
-	        	</li>
-	       	</ul> 	
+		        <ul className="auth-form__menu auth-menu">
+		        	<li className="auth-menu__item">
+		        		<a target='blank' href= 'https://unsplash.com/@harleydavidson' >
+		        			<span>Профиль</span>
+		        		</a>
+		        	</li>
+		        	<li className="auth-menu__item">
+		        		<a href='/'>
+		        			<span>Выход</span>
+		        		</a>
+		        	</li>
+		       	</ul> 
+		    </div>   		
     	</React.Fragment>
 	)				      	      
 			

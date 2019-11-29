@@ -7,12 +7,12 @@ import Logo from './logo.js';
 import './index.css';
 
 const Header = ( props ) => {
-	const { code } = props;
+	const { token } = props;
 	
 	return (
 			<header className="main-header">
 				<Logo />
-		        <Form code = { code }/>
+		        <Form token = { token }/>
 			</header>
 	);
 			

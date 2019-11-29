@@ -142,7 +142,7 @@ const store = createStore(
 
 
 initialiseSagaMiddleware.run(apiSaga);
-//initialiseSagaMiddleware.run(getPhotosSaga);
+initialiseSagaMiddleware.run(getPhotosSaga);
 
 export default store;
 

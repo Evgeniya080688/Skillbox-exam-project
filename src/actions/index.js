@@ -9,10 +9,13 @@ export function getPhotos() {
   	}
 }
 
-export function getToken() {
+export function getToken(unsplash, code) {
   	return { 
-  		type: AUTH
-  		
+  		type: AUTH,
+  		payload: {
+			unsplash,
+			code			
+		}
   	}
 }
 

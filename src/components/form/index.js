@@ -7,11 +7,11 @@ import NotAuthForm from './notauth_form.js';
 import './index.css';
 
 const Form = ( props ) => {
-	const { code } = props;
+	const { token } = props;
 
-	if (code) {
+	if (token) {
 		return (	
-			<AuthForm />	        
+			<AuthForm token = { token }/>	        
     	)				      	      	
 	}
 	else {

@@ -22,8 +22,8 @@ let Photos = ( props ) => {
 
 const mapStateToProps = state => {
   return {
-    photos: state.photoList.photos,
-    currentPage: state.photoList.currentPage,
+    photos: state.photos,
+    currentPage: state.currentPage,
   }
 }
 
