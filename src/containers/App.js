@@ -15,17 +15,16 @@ class App extends React.Component {
 	// constructor(props) {
 	//     super(props);
 	//  }
-
+	 
 	componentDidMount() {
 		this.props.getToken(unsplash, code);
-		this.props.getPhotos();
 	}
 
 	render() {
 		return (
 		<React.Fragment>
 		    <Header token = { this.props.token }/>
-		    <Main code = { code } photos= { this.props.photos }/>
+		    <Main code = { this.props.token } photos= { this.props.photos }/>
 		</React.Fragment>
 		)
 		
@@ -44,7 +43,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = ( dispatch ) => {
 	return {
-		getToken: ( unsplash, code ) => dispatch(getToken( unsplash, code )),
+		getToken: ( unsplash, code ) => dispatch(getToken( unsplash. code )),
 		getPhotos: () => dispatch(getPhotos()),
 	}
 }
@@ -55,11 +54,5 @@ App = connect(
 )(App);
 
 export default App;
-
-
-// export default connect(
-//   mapStateToProps,
-//   { getToken }
-// )(App)
 
 

@@ -17,12 +17,12 @@ const Main = (props) => {
 		return (
 	    	<main>
 		    	<Switch>		    		
-		     		<Route exact path="/">
+		     		{/*<Route exact path="/">
 			        	<Redirect to="/photos" />
 			     	</Route>
 
 		     		<Route exact path="/photos" component={ Photos } />
-		     		<Route path="/photos/:id" component={ PhotoView } />
+		     		<Route path="/photos/:id" component={ PhotoView } />*/}
 		     		{/*<Route exact path="/">
 			        	<Redirect to="/auth" />
 			     	</Route>

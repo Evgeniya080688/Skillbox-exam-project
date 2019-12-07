@@ -1,27 +1,37 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
+import { unsplash, code } from '../api/unsplash'
+
+import { getToken, getPhotos } from '../actions/index'
 
 import PhotoList from '../components/photos/PhotoList';
 import LoadMore from '../components/buttons/LoadMore';
 
-let Photos = ( props ) => {
-	const { photos } = props;
-	
-	return (
-    	<React.Fragment>
+class Photos extends React.Component {
+
+	componentDidMount() {
+		this.props.getToken(unsplash, code);
+		//this.props.getPhotos();
+	}
+
+	render() {
+		return (
+		<React.Fragment>
 		    <div className="photos"> 	        	
-		    	<PhotoList photos = { photos } /> 
+		    	<PhotoList photos = { this.props.photos } /> 
 		        <LoadMore />
 	      	</div> 
-     	</React.Fragment>    
-	)
-}
+     	</React.Fragment> 
+		)
+		
+	}
 
-
+} 
 
 const mapStateToProps = state => {
   return {
+  	token: state.token,
     photos: state.photos,
     currentPage: state.currentPage,
   }
@@ -29,7 +39,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = ( dispatch ) => {
 	return {
-		
+		getPhotos: () => dispatch(getPhotos()),
+		getToken: ( unsplash, code ) => dispatch(getToken( unsplash, code ))
 	}
 }
 

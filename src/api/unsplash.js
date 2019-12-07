@@ -11,30 +11,20 @@ export const unsplash = new Unsplash({
 
 export const authenticationUnsplash = (unsplash) => {
 // Генерирует ссылку для авторизации с указанными правами
-  debugger
     const authenticationUrl = unsplash.auth.getAuthenticationUrl([
         "public",
-        "write_likes"
+        "write_likes",
+        
     ]);
 
     location.assign(authenticationUrl); // Перенапревление на авторизацию в unsplash
 
-    const code = location.search.split( 'code=' )[1];
-
-    if (code) {
-        return unsplash.auth.userAuthentication(code)
-            .then(res => res.json())
-            .then(json => {
-                unsplash.auth.setBearerToken(json.access_token);
-                //unsplash.photos.likePhoto​(​ "kBJEJqWNtNY"​ );
-        });
-    }
 }
 
-export const authenticationUrl = unsplash.auth.getAuthenticationUrl([
-  'public',
-  'write_likes',
-])
+// export const authenticationUrl = unsplash.auth.getAuthenticationUrl([
+//   'public',
+//   'write_likes',
+// ])
 
 export const code = location.search.split( 'code=' )[1]; 
 
