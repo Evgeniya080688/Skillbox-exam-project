@@ -12,10 +12,7 @@ import Auth from './Auth';
 import PageNotFound from './PageNotFound';
 
 class App extends React.Component {
-	// constructor(props) {
-	//     super(props);
-	//  }
-	 
+	
 	componentDidMount() {
 		this.props.getToken(unsplash, code);
 	}
