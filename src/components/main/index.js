@@ -5,10 +5,10 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { unsplash, code, authenticationUnsplash } from '../../api/unsplash';
 import { getToken } from '../../actions';
 
-import Photos from '../../containers/Photos';
+//import Photos from '../../containers/Photos';
 import Auth from '../../containers/Auth';
 import PageNotFound from '../../containers/PageNotFound';
-import PhotoView from '../../containers/PhotoView'
+//import PhotoView from '../../containers/PhotoView'
 
 const Main = (props) => {  
 	const { token } = props;
