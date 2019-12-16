@@ -4,7 +4,7 @@ import { Route, Redirect } from 'react-router-dom';
 
 import { getToken } from '../actions/index';
 
-import { authenticationUrl, authenticationUnsplash, unsplash, code } from '../api/unsplash';
+import { authenticationUnsplash, unsplash, code } from '../api/unsplash';
 
 class Auth extends React.Component {
 
@@ -14,8 +14,8 @@ class Auth extends React.Component {
 		    	<h1>Войдите в систему</h1>
 		        <button className="btn btn__auth" onClick={ () => 
 	        		{
-	        			//this.props.getToken(unsplash, code);
-	        			authenticationUnsplash(unsplash);
+	        			//getToken(unsplash, code);
+	        			authenticationUnsplash();
 	        		}
 		        }>
 		        	Авторизация
