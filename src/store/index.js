@@ -1,8 +1,7 @@
 import { createStore, applyMiddleware, compose } from "redux";
-import reducer from '../reducers/index.js';
-//import { checkCodeMiddleware } from "../middleware";
 import createSagaMiddleware from "redux-saga";
 
+import reducer from './reducer.js';
 import apiSaga from "../sagas/apiSaga";
 //import getPhotosSaga from "../sagas/getPhotosSaga";
 

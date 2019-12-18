@@ -1,9 +1,9 @@
 import { takeEvery, call, put } from "redux-saga/effects";
 import Unsplash from 'unsplash-js';
 
-import { unsplash, code, authenticationUrl } from '../api/unsplash';
+import { unsplash, code, authenticationUrl } from '../services/unsplash';
 
-import { getCookie, setCookie, deleteCookie} from '../helpers';
+import { getCookie, setCookie, deleteCookie} from '../services/helpers';
 
 export default function* watcherSaga() {
   yield takeEvery("AUTH", workerSaga);

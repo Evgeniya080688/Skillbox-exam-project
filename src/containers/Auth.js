@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Route, Redirect } from 'react-router-dom';
 
-import { getToken } from '../actions/index';
+import { getToken } from '../store/actions';
 
-import { authenticationUnsplash, unsplash, code } from '../api/unsplash';
+import { authenticationUnsplash, unsplash, code } from '../services/unsplash';
 
 class Auth extends React.Component {
 

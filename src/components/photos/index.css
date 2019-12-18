@@ -1,0 +1,38 @@
+.photos-list {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	padding-inline-start: 0;
+}
+
+.photos-list__item {
+	margin-bottom: 1em;
+}
+
+.photo-item {
+	list-style: none;
+	width: 24%;
+	min-height: 10em;
+	background-color: gray;	
+}
+
+.photo-item__image {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+}
+
+.photo-item__caption {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.photo-card {
+	width: 100%;
+	min-height: 20em;
+	margin: 1em auto;
+	background-color: gray;
+}
+

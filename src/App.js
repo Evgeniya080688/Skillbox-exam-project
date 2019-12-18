@@ -2,14 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import { getToken, getPhotos } from '../actions/index'
-import { unsplash, code } from '../api/unsplash'
+import { getToken, getPhotos } from './store/actions'
+import { unsplash, code } from './services/unsplash'
 
-import Header from '../components/header/index.js';
-import Main from '../components/main/index.js';
-
-import Auth from './Auth';
-import PageNotFound from './PageNotFound';
+import Header from './components/header/index.js';
+import Main from './components/main/index.js';
 
 class App extends React.Component {
 	constructor(props) {	

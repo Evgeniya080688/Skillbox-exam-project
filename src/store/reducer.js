@@ -1,4 +1,4 @@
-import { AUTH, AUTH_SUCSESS, GET_PHOTOS, LOAD_MORE_PHOTOS } from "../constants/action-types";
+import { AUTH, AUTH_SUCSESS, GET_PHOTOS, LOAD_MORE_PHOTOS } from "./action-types";
 
 const initialState = {
 	token: null,

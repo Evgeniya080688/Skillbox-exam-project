@@ -4,7 +4,7 @@ import { render } from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import store from "./store/index.js";
-import App from './containers/App.js';
+import App from './App.js';
 
 // import { createStore, applyMiddleware } from 'redux'
 // import thunk from 'redux-thunk'

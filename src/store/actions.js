@@ -1,7 +1,7 @@
 import { toJson } from 'unsplash-js'
-import { unsplash } from '../api/unsplash'
+import { unsplash } from '../services/unsplash'
 
-import { AUTH, DATA_REQUESTED, GET_PHOTOS } from "../constants/action-types";
+import { AUTH, DATA_REQUESTED, GET_PHOTOS } from "./action-types";
 
 export function getPhotos() {
   	return { 
