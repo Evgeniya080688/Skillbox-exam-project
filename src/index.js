@@ -7,35 +7,27 @@ const unsplash = new Unsplash({
     callbackUrl: 'http://localhost:8080'
 });
 
-const authenticationUnsplash = () => {
-// Генерирует ссылку для авторизации с указанными правами
-    const authenticationUrl = unsplash.auth.getAuthenticationUrl([
+const authenticationUrl = unsplash.auth.getAuthenticationUrl([
         "public",
-        "write_likes",
-        
+        "write_likes",        
     ]);
 
-    location.assign(authenticationUrl); // Перенапревление на авторизацию в unsplash
+const code = location.search.split( 'code=' )[1]; 
 
-}
-
-export const code = location.search.split( 'code=' )[1]; 
-
-
-function getToken() {
-//если адресная строка содержит код
-    if (code ){
+if (code ){
         //авторизируемся
-        unsplash.auth.userAuthentication(code).then(response =>
-           response.json());
+        unsplash.auth.userAuthentication(code)
+        .then(response => response.json())
+        .then((json) => {
+        // Сохраняем полученный токен для того, чтоб можно было выполнять какие-либо действия от имени пользователя
+        unsplash.auth.setBearerToken(json.access_token)});
         //показываем первый экран
         alert('первый экран');
     }
-    else {
+else {
         //нет кода - перенаправляем на страницу авторизации
         location.assign(authenticationUrl);
     }
-    
-}
 
-getToken();
+
+
