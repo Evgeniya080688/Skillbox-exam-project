@@ -42,7 +42,7 @@ function getToken() {
                         expires: date.toUTCString()
                     });
                     unsplash.auth.setBearerToken(json.access_token);
-                    alert( JSON.stringify(json) );
+                    //alert( "Done" );
                     return json;
                 }
                 else { return console.error("Лимит запросов исчерпан!"); }
@@ -51,11 +51,14 @@ function getToken() {
             
        
     }
+  }
+  else {
+      location.assign(authenticationUrl);
+
   } 
+ } 
 
-    
-}
-
+  
 
 
 

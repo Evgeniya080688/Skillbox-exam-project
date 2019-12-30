@@ -3,14 +3,19 @@ import './index.css';
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-const LoadMore = () => {
+const LoadMore = ( props ) => {
+	const { loadMorePhotos, currentPage } = props;
 
 	return (			
 		<React.Fragment>
 			<div className="photos__loadmore loadmore">
 	            <button
-	                type="button"
-	                className="btn loadmore-btn"			                
+	                type="submit"
+	                className="btn loadmore-btn"
+	                onClick = { () => {
+								loadMorePhotos(currentPage);
+							}	
+						}		                
 	            >
 	                Загрузить еще
 	            </button>

@@ -38,11 +38,11 @@ export function deleteCookie(name) {
     })
 }
 
-export function getDate() {
-    const nowDate = new Date();
-    const dayToday = nowDate.getDate();
-    const monthToday = nowDate.getMonth()+1;
-    const yearToday = nowDate.getFullYear();
+export function convertDate(yourDate) {
+    var newDate = new Date(yourDate);
+    const dayToday = newDate.getDate();
+    const monthToday = newDate.getMonth()+1;
+    const yearToday = newDate.getFullYear();
     return "" + dayToday+"-"+ monthToday + "-" + yearToday;
 }
 

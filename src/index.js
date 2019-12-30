@@ -1,33 +1,25 @@
-import Unsplash from 'unsplash-js';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { render } from "react-dom";
+import { Provider } from "react-redux";
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import store from "./store/index.js";
+import App from './App.js';
 
-// Инициализация, создаем экземпляр unplush
-const unsplash = new Unsplash({
-    applicationId:"711d5fa98592f3057ed538ca1ac6134ad6d8684023a8d56d71b57ec7577658bc",
-    secret:"bae45466393d679eec4668dce80dc5f26dcf46220adef7c681ea053a2ef9a81f",
-    callbackUrl: 'http://localhost:8080'
-});
+// import { createStore, applyMiddleware } from 'redux'
+// import thunk from 'redux-thunk'
 
-const authenticationUrl = unsplash.auth.getAuthenticationUrl([
-        "public",
-        "write_likes",        
-    ]);
+// const store = createStore(reducers, applyMiddleware(thunk))
 
-const code = location.search.split( 'code=' )[1]; 
-
-if (code ){
-        //авторизируемся
-        unsplash.auth.userAuthentication(code)
-        .then(response => response.json())
-        .then((json) => {
-        // Сохраняем полученный токен для того, чтоб можно было выполнять какие-либо действия от имени пользователя
-        unsplash.auth.setBearerToken(json.access_token)});
-        //показываем первый экран
-        alert('первый экран');
-    }
-else {
-        //нет кода - перенаправляем на страницу авторизации
-        location.assign(authenticationUrl);
-    }
+render(
+	<Provider store={store}>
+    	<Router>
+	  		<App />
+	  	</Router>
+  	</Provider>,
+	document.getElementById("app")
+);
 
 
 
+export default store;

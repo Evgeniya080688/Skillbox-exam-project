@@ -11,7 +11,7 @@ const Back = () => {
                 type="button"
                 className="btn like-btn"            
             >
-                <Link to='/photos'>Back</Link>
+                <Link to='/'>Back</Link>
             </button>	
 		</React.Fragment>	
 	);
