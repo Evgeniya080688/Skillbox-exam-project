@@ -12,7 +12,7 @@ const reducer = ( state = initialState, action ) => {
 	let newState = {...state}; 
 	switch (action.type) {
 		case "TOKEN_LOADED":  
-			return { ...state, token: action.payload.access_token}	
+			return { ...state, token: action.payload}	
 		case "PHOTOS_LOADED":
 			return { ...state, photos: action.payload }
 		case "USER_LOADED":

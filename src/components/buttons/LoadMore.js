@@ -11,9 +11,9 @@ const LoadMore = ( props ) => {
 			<div className="photos__loadmore loadmore">
 	            <button
 	                type="submit"
-	                className="btn loadmore-btn"
+	                className="btn btn-loadmore"
 	                onClick = { () => {
-								loadMorePhotos(currentPage);
+							loadMorePhotos(currentPage);
 							}	
 						}		                
 	            >

@@ -1,8 +1,13 @@
-body {
-  	margin: 0;
+html, body {
+    margin: 0;
     padding: 0;
     width: 100%;
     min-width: 300px;
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
+}
+
+.auth-view {
+	text-align: center;
+	width: 100%;
 }

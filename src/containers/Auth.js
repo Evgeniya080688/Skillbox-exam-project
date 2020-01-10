@@ -9,15 +9,17 @@ class Auth extends React.Component {
 	render() {
 		return (
 		    <React.Fragment>
-		    	<h1>Войдите в систему</h1>
-		        <button className="btn btn__auth" onClick={ () => 
-	        		{
-	        			
-	        			authenticationUnsplash();
-	        		}
-		        }>
-		        	Авторизация
-		        </button>
+			    <div className="auth-view">
+			    	<h1>Войдите в систему</h1>
+			        <button className="btn btn-auth" onClick={ () => 
+		        		{
+		        			
+		        			authenticationUnsplash();
+		        		}
+			        }>
+			        	Авторизация
+			        </button>
+			    </div>
 		    </React.Fragment>
    		)
 		

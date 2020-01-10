@@ -12,18 +12,17 @@ const PhotoCard = ({photo}) => {
 
 	return (			
 		<React.Fragment>
-			<div className="view-picture">				
-				<img alt={ location } src={ urls.regular } />
-			</div>		
 			<div className="view-info">
 				<span>
 					photo by&nbsp;
               		<a href={ user.links.html }>{ user.name }</a> on
               		<a href="https://unsplash.com/">&nbsp;Unsplash</a>
 				</span>
-		    	<span>{ date }</span>
-		    	<span> Нравится { likes }</span>
+		    	<span>{ date }</span>		    	
 			</div>	
+			<div className="view-picture">				
+				<img alt={ location } src={ urls.regular } />
+			</div>				
 		</React.Fragment>	
 	);
 }

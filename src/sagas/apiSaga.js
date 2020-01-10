@@ -19,18 +19,18 @@ function* workerSaga() {
 }
 
 function getToken() {
-  if (code) {
     if (getCookie("token")) {
-        unsplash.auth.setBearerToken(getCookie("token"));
-        return unsplash.auth.userAuthentication(code).then(response =>
-           response.json());
+        //unsplash.auth.setBearerToken(getCookie("token"));
+        //return unsplash.auth.userAuthentication(code).then(response =>
+        //   response.json());
+        return getCookie("token");
 
     } else {
         return unsplash.auth.userAuthentication(code)
             .then((res) => res.json())
             .then((json) => {
               if (json.error) {
-                alert("Ошибка передачи данных");
+                //alert("Ошибка передачи данных");
                 location.assign(authenticationUrl);
               }
               else {
@@ -41,9 +41,9 @@ function getToken() {
                     setCookie("token", json.access_token, {
                         expires: date.toUTCString()
                     });
-                    unsplash.auth.setBearerToken(json.access_token);
+                    //unsplash.auth.setBearerToken(json.access_token);
                     //alert( "Done" );
-                    return json;
+                    return json.access_token;
                 }
                 else { return console.error("Лимит запросов исчерпан!"); }
               }
@@ -51,11 +51,7 @@ function getToken() {
             
        
     }
-  }
-  else {
-      location.assign(authenticationUrl);
-
-  } 
+  
  } 
 
   

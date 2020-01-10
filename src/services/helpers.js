@@ -51,3 +51,7 @@ export function isEmptyString(text){
     let result = (replaceText === '') ? true : false;
     return result;
 }
+
+export function toggleClassLike(){
+    this.classList.toggle("filled")
+}

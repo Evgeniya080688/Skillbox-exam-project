@@ -14,9 +14,11 @@ let PhotoView = ( { match, history, photos, token } ) => {
 
 	return (
 		<React.Fragment>
-			<PhotoCard photo = { photo } />				
-			<Like toggleLike = { toggleLike } id = { photo.id } unsplash = { unsplash }/>
-			<Back />		    			
+			<div className="photo-view"> 			
+				<Back />
+				<Like toggleLike = { toggleLike } id = { photo.id } unsplash = { unsplash } likes = { photo.likes }/>
+				<PhotoCard photo = { photo } />	
+			</div>			    			
 		</React.Fragment>
 	)
 }

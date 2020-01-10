@@ -2,9 +2,10 @@ import './index.css';
 
 import React from 'react';
 import { Link } from 'react-router-dom'
+import { toggleClassLike } from '../../services/helpers';
 
 const Like = ( props ) => {
-    const { id, unsplash, toggleLike } = props;
+    const { id, unsplash, toggleLike, likes } = props;
 	return (			
 		<React.Fragment>
 			<button
@@ -12,10 +13,12 @@ const Like = ( props ) => {
                 className="btn btn-like"
                 onClick = { () => {
                         toggleLike(unsplash, id);
+                        toggleClassLike();
                     }
                 }                           
             >
-                like
+                <span>{ likes }</span>
+                <img src="../../img/like.svg" alt="Like" title="Like" />
             </button>
 		</React.Fragment>	
 	);
