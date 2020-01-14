@@ -5,20 +5,21 @@ import PhotoItem from './PhotoItem';
 import { connect } from 'react-redux';
 
 let PhotoList = (props) => {
-  const { photos } = props;  
+  const { photos, toggleLike } = props;  
 
   return (
       <ul className="photos__list photos-list">
         {
           photos.map((photo) => {
-            const { id } = photo;
+            const { id, urls, description, likes, user, updated_at } = photo;
             return (
-              <li className="photos-list__item photo-item">
+              
                 <PhotoItem 
-                  key={id} 
-                  photo={photo} 
+                  key={ id } 
+                  photo={ photo }
+                  toggleLike = { toggleLike } 
                 />
-              </li>
+              
               )
             }
           )

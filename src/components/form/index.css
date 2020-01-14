@@ -2,15 +2,29 @@
 	right: 1em;
 }
 
+.auth-form a {
+	text-decoration: none;
+	color: black;
+}
+
 .auth-menu {
 	display: none;
 	position: absolute;
-	top: 3em;
-	right: 1em;
+	top: 1.5em;
+	right: 0em;
 	width: 10em;
 	height: auto;
-	color: white;
-	background-color: black;	
+	padding: 1em;
+	list-style: none;
+	color: black;
+	background-color: white;
+	border-radius: 0.5em;
+	box-shadow: -3px 4px 9px 0px rgba(50, 50, 50, 0.69);	
+}
+
+.auth-menu ul li a {
+	text-decoration: none;
+	color: black;
 }
 
 .auth-form:hover .auth-menu {

@@ -1,6 +1,11 @@
 import { takeEvery, call, put } from "redux-saga/effects";
+import Unsplash from 'unsplash-js';
 
-export default function* watcherSagaListPhotos() {
+import { unsplash } from '../services/unsplash';
+
+import * as selectors from './selectors';
+
+export default function* watcherSagaGetUser() {
   yield takeEvery("GET_PHOTOS", workerSaga);
 }
 
@@ -13,12 +18,13 @@ function* workerSaga() {
   }
 }
 
-export const getPhotos = (unsplash, start = 1, end = 15) => {
+function getPhotos() {    
     return (
-      unsplash.photos.listPhotos(start, end, 'latest')
+      unsplash.photos.listPhotos(1, 16, 'latest')
         .then(res => res.text())
         .then(res => {
-            if (res != "Rate Limit Exceeded" && !JSON.parse(res).errors) { return JSON.parse(res); }
+            if (res != "Rate Limit Exceeded" && !JSON.parse(res).errors) 
+              { return JSON.parse(res); }
             else { console.error("Лимит запросов исчерпан!"); }
         })
     )

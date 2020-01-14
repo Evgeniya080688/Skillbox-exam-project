@@ -7,12 +7,14 @@ const Back = () => {
 
 	return (			
 		<React.Fragment>
+		<Link to='/'>
 			<button
                 type="button"
-                className="btn like-btn"            
+                className="btn btn-back"            
             >
-                <Link to='/photos'>Back</Link>
-            </button>	
+                Back
+            </button>
+        </Link>	
 		</React.Fragment>	
 	);
 }

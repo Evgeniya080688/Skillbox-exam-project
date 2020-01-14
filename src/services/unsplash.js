@@ -9,7 +9,7 @@ export const unsplash = new Unsplash({
     callbackUrl: 'http://localhost:8080'
 });
 
-export const authenticationUnsplash = (unsplash) => {
+export const authenticationUnsplash = () => {
 // Генерирует ссылку для авторизации с указанными правами
     const authenticationUrl = unsplash.auth.getAuthenticationUrl([
         "public",
@@ -21,10 +21,11 @@ export const authenticationUnsplash = (unsplash) => {
 
 }
 
-// export const authenticationUrl = unsplash.auth.getAuthenticationUrl([
-//   'public',
-//   'write_likes',
-// ])
+export const authenticationUrl = unsplash.auth.getAuthenticationUrl([
+        "public",
+        "write_likes",
+        
+    ]);
 
 export const code = location.search.split( 'code=' )[1]; 
 

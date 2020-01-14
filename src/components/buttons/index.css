@@ -1,7 +1,65 @@
 .btn {
-	width: 20em;
 	color: white;
 	background-color: black;
+	border: none;
+	border-radius: 0.5em;
+	padding: 1em;
+	cursor: pointer;
+}
+
+.btn-like {
+	display: flex;
+	width: auto;
+	height: 1.5em;
+	padding: 0;	
+	justify-content: flex-end;
+	background-color: transparent;
+	color: red;
+	outline: none!important;
+}
+
+
+.btn-like img {
+	width: 3em;
+	height: 100%
+}
+
+.photos__loadmore {
+	width: 15em;
+	margin: 1em auto;
+}
+
+.btn-loadmore {
+	width: 100%;
+	margin: 1em auto;
+}
+
+.btn-auth {
+	width: 15em;
+	margin-rigth: 40%;
+
+}
+
+.filled {
+	color: red;
+}
+
+svg{
+  display: block;
+  width: 50px;
+  height: auto;
+}
+
+#svg_2{
+  fill:transparent; 
+  stroke:#f00;
+  stroke-width:6px;
+  cursor:pointer;
+  transition:fill .3s;
+}
+
+#svg_2.filled{
+  fill:#f00;
 }
 
 

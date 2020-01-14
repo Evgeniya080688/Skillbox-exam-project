@@ -28,9 +28,6 @@ module.exports = merge(common, {
 		      	}),
 		    new TerserJSPlugin({}), 
 		    new OptimizeCSSAssetsPlugin({}),
-		    new webpack.optimize.MinChunkSizePlugin({
-			  minChunkSize: 10000 // Minimum number of characters
-			});
 		    ],
 		    
 		    

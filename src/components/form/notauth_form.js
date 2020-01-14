@@ -9,7 +9,7 @@ const NotAuthForm = ( props ) => {
 	return (
 		<Link to={{ pathname: `/` }}>
 			<span></span>
-    	</Link>
+    	</Link>    	
 	)
 	
 			

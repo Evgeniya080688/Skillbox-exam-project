@@ -37,3 +37,21 @@ export function deleteCookie(name) {
       expires: -1
     })
 }
+
+export function convertDate(yourDate) {
+    var newDate = new Date(yourDate);
+    const dayToday = newDate.getDate();
+    const monthToday = newDate.getMonth()+1;
+    const yearToday = newDate.getFullYear();
+    return "" + dayToday+"-"+ monthToday + "-" + yearToday;
+}
+
+export function isEmptyString(text){
+    const replaceText = text.replace(/\s+/g," ").trim();
+    let result = (replaceText === '') ? true : false;
+    return result;
+}
+
+export function toggleClassLike(){
+    this.classList.toggle("filled")
+}

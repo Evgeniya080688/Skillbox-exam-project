@@ -2,6 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import { unsplash } from '../services/unsplash';
+import { toggleLike } from '../store/actions'
+
 import PhotoCard from '../components/photos/PhotoCard';
 import Like from '../components/buttons/Like';
 import Back from '../components/buttons/Back';
@@ -11,23 +14,25 @@ let PhotoView = ( { match, history, photos, token } ) => {
 
 	return (
 		<React.Fragment>
-			<PhotoCard photo = { photo } />				
-			<Like />
-			<Back />		    			
+			<div className="photo-view"> 			
+				<Back />
+				<Like toggleLike = { toggleLike } id = { photo.id } unsplash = { unsplash } likes = { photo.likes }/>
+				<PhotoCard photo = { photo } />	
+			</div>			    			
 		</React.Fragment>
 	)
 }
 
 const mapStateToProps = state => {
-  return {
-    photos: state.photoList.photos,
-    token: state.auth.token,
-  }
+	const {token, photos, currentPage} = state;
+	return {
+	    photos
+	}
 }
 
 const mapDispatchToProps = ( dispatch ) => {
 	return {
-		
+		toggleLike : ( unsplash, photo ) => dispatch(toggleLike ( unsplash, photo ))
 	}
 }
 
