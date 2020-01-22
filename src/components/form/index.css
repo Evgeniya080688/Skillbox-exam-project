@@ -10,6 +10,7 @@
 .auth-menu {
 	display: none;
 	position: absolute;
+	z-index: 5;
 	top: 1.5em;
 	right: 0em;
 	width: 10em;

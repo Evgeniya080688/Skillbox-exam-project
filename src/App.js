@@ -15,8 +15,8 @@ class App extends React.Component {
 	 
 	componentDidMount() {
 		this.props.getToken(unsplash, code);
-		this.props.getPhotos(unsplash, this.props.currentPage, this.props.photoPerPage);
-		this.props.getUser(unsplash);
+		//this.props.getPhotos(unsplash, this.props.currentPage, this.props.photoPerPage);
+		//this.props.getUser(unsplash);
 	}
 
 	render() {
@@ -53,8 +53,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = ( dispatch ) => {
 	return {
 		getToken: ( unsplash, code ) => dispatch(getToken( unsplash. code )),
-		getPhotos: ( unsplash, currentPage, photoPerPage ) => dispatch(getPhotos( unsplash, currentPage, photoPerPage )),
-		getUser: ( unsplash ) => dispatch(getUser( unsplash )),
+		//getPhotos: ( unsplash, currentPage, photoPerPage ) => dispatch(getPhotos( unsplash, currentPage, photoPerPage )),
+		//getUser: ( unsplash ) => dispatch(getUser( unsplash )),
 
 	}
 }

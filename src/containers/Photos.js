@@ -11,8 +11,7 @@ import LoadMore from '../components/buttons/LoadMore';
 class Photos extends React.Component {
 
 	componentDidMount() {
-		//this.props.getToken(unsplash, code);
-		//this.props.getPhotos();
+		this.props.getPhotos(unsplash, this.props.currentPage, this.props.photoPerPage);
 	}
 
 	render() {
@@ -39,6 +38,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = ( dispatch ) => {
 	return {
+		getPhotos: ( unsplash, currentPage, photoPerPage ) => dispatch(getPhotos( unsplash, currentPage, photoPerPage )),
 		loadMorePhotos: (currentPage) => dispatch(loadMorePhotos( currentPage )),
 		toggleLike: ( unsplash, photo ) => dispatch(toggleLike ( unsplash, photo )),
 	}

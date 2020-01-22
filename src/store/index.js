@@ -2,10 +2,7 @@ import { createStore, applyMiddleware, compose } from "redux";
 import createSagaMiddleware from "redux-saga";
 
 import reducer from './reducer.js';
-import apiSaga from "../sagas/apiSaga";
-import getPhotosSaga from "../sagas/getPhotosSaga";
-import getUserSaga from "../sagas/getUserSaga";
-import likeByUserSaga from "../sagas/likeByUserSaga";
+import rootSaga from "../sagas/sagas";
 
 const initialiseSagaMiddleware = createSagaMiddleware();
 
@@ -18,11 +15,7 @@ const store = createStore(
   )
 );
 
-
-initialiseSagaMiddleware.run(apiSaga);
-initialiseSagaMiddleware.run(getPhotosSaga);
-initialiseSagaMiddleware.run(getUserSaga);
-initialiseSagaMiddleware.run(likeByUserSaga);
+initialiseSagaMiddleware.run(rootSaga);
 
 export default store;
 

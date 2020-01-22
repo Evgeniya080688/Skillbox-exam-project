@@ -19,7 +19,7 @@ if (code ){
     }
 else {
         //нет кода - перенаправляем на страницу авторизации
-        location.assign(authenticationUrl);
+        //location.assign(authenticationUrl);
     }
 
 

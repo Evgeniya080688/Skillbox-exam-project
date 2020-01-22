@@ -1,15 +1,20 @@
-import { takeEvery, call, put } from "redux-saga/effects";
+import { takeEvery, call, put, all } from "redux-saga/effects";
 import Unsplash from 'unsplash-js';
+import { select } from 'redux-saga';
 
 import { unsplash, code, authenticationUrl } from '../services/unsplash';
 
 import { getCookie, setCookie, deleteCookie} from '../services/helpers';
 
-export default function* watcherSaga() {
-  yield takeEvery("AUTH", workerSaga);
+import * as selectors from './selectors';
+
+export const getCurrentPage = (state) => state.currentPage;
+
+function* watchApi() {
+  yield takeEvery("AUTH", workApi);
 }
 
-function* workerSaga() {
+function* workApi() {
   try {
     const payload = yield call(getToken);
     yield put({ type: "TOKEN_LOADED", payload });
@@ -30,7 +35,6 @@ function getToken() {
             .then((res) => res.json())
             .then((json) => {
               if (json.error) {
-                //alert("Ошибка передачи данных");
                 location.assign(authenticationUrl);
               }
               else {
@@ -42,17 +46,49 @@ function getToken() {
                         expires: date.toUTCString()
                     });
                     //unsplash.auth.setBearerToken(json.access_token);
-                    //alert( "Done" );
                     return json.access_token;
                 }
                 else { return console.error("Лимит запросов исчерпан!"); }
               }
-            });
-            
+            });         
        
     }
   
- } 
+ }
+
+
+function* watchGetPhotos() {
+    yield takeEvery("GET_PHOTOS", workGetPhotos);
+}
+
+function* workGetPhotos({ currentPage, photoPerPage }) {
+    try {
+        const payload = yield call(getPhotos, currentPage, photoPerPage);
+        yield put({ type: "PHOTOS_LOADED", payload });
+    } catch (e) {
+        yield put({ type: "LOADED_ERRORED", payload: e });
+    }
+}
+
+function getPhotos( currentPage, photoPerPage ) {    
+    return (
+        unsplash.photos.listPhotos(currentPage, photoPerPage, 'latest')
+            .then(res => res.text())
+            .then(res => {
+                if (res != "Rate Limit Exceeded" && !JSON.parse(res).errors) 
+                    { return JSON.parse(res); }
+                else { console.error("Лимит запросов исчерпан!"); }
+            })
+    )
+}
+
+
+ export default function* rootSaga() {
+  yield all([
+    watchApi(), 
+    watchGetPhotos()
+  ])
+} 
 
   
 
