@@ -11,7 +11,7 @@ import LoadMore from '../components/buttons/LoadMore';
 class Photos extends React.Component {
 
 	componentDidMount() {
-		this.props.getPhotos(unsplash, this.props.currentPage, this.props.photoPerPage);
+		this.props.getPhotos();
 	}
 
 	render() {

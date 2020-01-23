@@ -61,18 +61,18 @@ function* watchGetPhotos() {
     yield takeEvery("GET_PHOTOS", workGetPhotos);
 }
 
-function* workGetPhotos({ currentPage, photoPerPage }) {
+function* workGetPhotos() {
     try {
-        const payload = yield call(getPhotos, currentPage, photoPerPage);
+        const payload = yield call(getPhotos);
         yield put({ type: "PHOTOS_LOADED", payload });
     } catch (e) {
         yield put({ type: "LOADED_ERRORED", payload: e });
     }
 }
 
-function getPhotos( currentPage, photoPerPage ) {    
+function getPhotos() {    
     return (
-        unsplash.photos.listPhotos(currentPage, photoPerPage, 'latest')
+        unsplash.photos.listPhotos(1, 16, 'latest')
             .then(res => res.text())
             .then(res => {
                 if (res != "Rate Limit Exceeded" && !JSON.parse(res).errors) 
