@@ -39,8 +39,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = ( dispatch ) => {
 	return {
 		getPhotos: ( unsplash, currentPage, photoPerPage ) => dispatch(getPhotos( unsplash, currentPage, photoPerPage )),
-		loadMorePhotos: (currentPage) => dispatch(loadMorePhotos( currentPage )),
-		toggleLike: ( unsplash, photo ) => dispatch(toggleLike ( unsplash, photo )),
+		// loadMorePhotos: (currentPage) => dispatch(loadMorePhotos( currentPage )),
+		// toggleLike: ( unsplash, photo ) => dispatch(toggleLike ( unsplash, photo )),
 	}
 }
 

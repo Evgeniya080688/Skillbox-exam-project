@@ -24,33 +24,7 @@ export function getToken(unsplash, code) {
     }
 }
 
-export function getUser(unsplash) {
-    return { 
-        type: GET_USER,
-        payload: {
-            unsplash
-        }
-    }
-}
 
-export function toggleLike(unsplash, photo) {
-    return { 
-        type: TOGGLE_LIKE,
-        payload: {
-            unsplash,
-            photo      
-        }
-    }
-}
-
-export function loadMorePhotos(currentPage) {
-    return {
-        type: LOAD_MORE_PHOTOS,
-        payload: {
-            currentPage: currentPage++
-        }
-    }
-}
 
 
 

@@ -15,7 +15,6 @@ class App extends React.Component {
 	 
 	componentDidMount() {
 		this.props.getToken(unsplash, code);
-		//this.props.getPhotos(unsplash, this.props.currentPage, this.props.photoPerPage);
 		//this.props.getUser(unsplash);
 	}
 
