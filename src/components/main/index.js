@@ -14,10 +14,7 @@ const Main = (props) => {
 		return (
 	    	<main>
 		    	<Switch>    		
-		     		
-			     	<Route exact path="/" component={ Photos } />
-		     		
-		     		
+			     	<Route exact path="/" component={ Photos } />		     		
 		     		<Route path="/image/:id" component={ PhotoView } />
 		     		<Route component={ PageNotFound } />
 		    	</Switch>
@@ -28,6 +25,7 @@ const Main = (props) => {
 	    return (
      		<main>
      			<Switch>
+     				<Route path="/image/:id" component={ PhotoView } />
 		     		<Route exact path="/" component={ Auth } / >
 		     		<Route component={ PageNotFound } />		     		
 		     	</Switch>
