@@ -3,12 +3,10 @@ import { Link } from 'react-router-dom';
 
 import './index.css';
 
-const NotAuthForm = ( props ) => {
-	const { token } = props;
-
+const NotAuthForm = () => {
 	return (
 		<Link to={{ pathname: `/` }}>
-			<span></span>
+        	<span>Выход</span>        		
     	</Link>    	
 	)
 	

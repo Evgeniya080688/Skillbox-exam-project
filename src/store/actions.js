@@ -14,15 +14,6 @@ export function getPhotos(unsplash, currentPage, photoPerPage) {
   	}
 }
 
-export function getToken(unsplash, code) {
-    return { 
-        type: AUTH,
-        payload: {
-            unsplash,
-            code      
-        }
-    }
-}
 
 
 

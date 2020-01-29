@@ -14,22 +14,17 @@ class App extends React.Component {
 	 }
 	 
 	componentDidMount() {
-		this.props.getToken(unsplash, code);
-		//this.props.getUser(unsplash);
+	
 	}
 
 	render() {
 		return (
 		<React.Fragment>
 		    <Header 
-		    	token = { this.props.token }
 		    	userName = { this.props.userName }
 		    	userLink = {this.props.userLink }
 		    />
-		    <Main 
-		    	code = { this.props.token } 
-		    	
-		    />
+		    <Main/>
 		</React.Fragment>
 		)
 		
@@ -40,20 +35,15 @@ class App extends React.Component {
 const mapStateToProps = state => {
 	const { token, userName, userLink, photos, currentPage, photoPerPage } = state;
 	return {
-	    token,
 	    userName,
 	    userLink,
-	    photos,
-	    currentPage,
-	    photoPerPage
+	    photos
 	}
 }
 
 const mapDispatchToProps = ( dispatch ) => {
 	return {
-		getToken: ( unsplash, code ) => dispatch(getToken( unsplash. code )),
-		//getPhotos: ( unsplash, currentPage, photoPerPage ) => dispatch(getPhotos( unsplash, currentPage, photoPerPage )),
-		//getUser: ( unsplash ) => dispatch(getUser( unsplash )),
+		
 
 	}
 }

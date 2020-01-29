@@ -10,9 +10,7 @@ const initialState = {
 
 const reducer = ( state = initialState, action ) => {
 	let newState = {...state}; 
-	switch (action.type) {
-		case "TOKEN_LOADED":  
-			return { ...state, token: action.payload}	
+	switch (action.type) {	
 		case "PHOTOS_LOADED":
 			return { ...state, photos: action.payload }
     	default:

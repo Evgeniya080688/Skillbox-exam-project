@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './index.css';
 
 const AuthForm = (props) => {
-	const { token, userName, userLink } = props;
+	const { userName, userLink } = props;
 	const link = "https://unsplash.com/@" + userLink;
 
 	return (		        

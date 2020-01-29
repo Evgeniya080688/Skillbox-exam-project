@@ -8,12 +8,12 @@ import Logo from './logo.js';
 import './index.css';
 
 const Header = ( props ) => {
-	const { token, userName, userLink } = props;
+	const { userName, userLink } = props;
 	
 	return (
 			<header className="main-header">
 				<Logo />
-		        <Form token = { token } userLink = { userLink } userName = { userName } />
+		        <Form userLink = { userLink } userName = { userName } />
 			</header>
 	);
 			
