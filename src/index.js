@@ -5,8 +5,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import store from "./store/index.js";
 import App from './App.js';
-import { unsplash, code, authenticationUrl } from './services/unsplash';
-
+import { unsplash, code } from './services/unsplash';
 
 if (code ){
         //авторизируемся
@@ -19,6 +18,11 @@ if (code ){
     }
 else {
         //нет кода - перенаправляем на страницу авторизации
+        const authenticationUrl = unsplash.auth.getAuthenticationUrl([
+            "public",
+            "write_likes",
+        ]);
+
         location.assign(authenticationUrl);
     }
 

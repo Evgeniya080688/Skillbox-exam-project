@@ -3,20 +3,19 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { unsplash } from '../services/unsplash';
-import { toggleLike } from '../store/actions'
 
 import PhotoCard from '../components/photos/PhotoCard';
 import Like from '../components/buttons/Like';
 import Back from '../components/buttons/Back';
 
-let PhotoView = ( { match, history, photos, token } ) => {
+let PhotoView = ( { match, history, photos } ) => {
 	const photo = photos.filter(photo => photo.id === match.params.id)[0]
 
 	return (
 		<React.Fragment>
 			<div className="photo-view"> 			
 				<Back />
-				<Like toggleLike = { toggleLike } id = { photo.id } unsplash = { unsplash } likes = { photo.likes }/>
+				<Like id = { photo.id } likes = { photo.likes }/>
 				<PhotoCard photo = { photo } />	
 			</div>			    			
 		</React.Fragment>
@@ -24,7 +23,7 @@ let PhotoView = ( { match, history, photos, token } ) => {
 }
 
 const mapStateToProps = state => {
-	const {token, photos, currentPage} = state;
+	const { photos } = state;
 	return {
 	    photos
 	}
@@ -32,7 +31,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = ( dispatch ) => {
 	return {
-		toggleLike : ( unsplash, photo ) => dispatch(toggleLike ( unsplash, photo ))
+		
 	}
 }
 

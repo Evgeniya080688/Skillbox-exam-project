@@ -4,8 +4,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Like from '../buttons/Like';
-import { convertDate, toggleClassLike } from '../../services/helpers';
-import { unsplash } from '../../services/unsplash';
+import { convertDate } from '../../services/helpers';
 
 const PhotoItem = ( props ) => {	
 	const { photo, toggleLike } = props;
@@ -17,15 +16,15 @@ const PhotoItem = ( props ) => {
 			<figure className="photo-item__figure">
 				<div className="photo-item__picture">
 					<Link to={{ pathname: `/image/${id}` }}>
-		         		<img alt={description} src={urls.thumb} />
+		         		<img alt={ description } src={urls.thumb} />
 		        	</Link>
 				</div>			   
 			    <figcaption className="photo-item__caption">
 			    	<span> Photo by&nbsp;
 	        			<a href={user.links.html}>{user.name}</a> on
 	        			<a href="https://unsplash.com/">&nbsp;Unsplash</a></span>
-			    	<span> { date } </span>
-			    	<Like toggleLike = { toggleLike } id = { id } unsplash = { unsplash }  likes = { likes } />					
+			    	<span>{ date }</span>
+			    	<Like id = { id } likes = { likes } />					
 			    </figcaption>
 		   	</figure>	
 		</li>

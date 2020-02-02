@@ -5,8 +5,7 @@ import { Link } from 'react-router-dom'
 
 import { convertDate } from '../../services/helpers'; 
 
-const PhotoCard = ({photo}) => {
-
+const PhotoCard = ({ photo }) => {
 	const { id, updated_at, user, urls, location, likes } = photo;
 	const date = convertDate( updated_at );
 

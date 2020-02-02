@@ -1,16 +1,8 @@
-import { toJson } from 'unsplash-js'
-import { unsplash } from '../services/unsplash'
+import { GET_PHOTOS } from "./action-types";
 
-import { AUTH, GET_PHOTOS, GET_USER, TOGGLE_LIKE, LOAD_MORE_PHOTOS } from "./action-types";
-
-export function getPhotos(unsplash, currentPage, photoPerPage) {
+export function getPhotos() {
   	return { 
-  		type: GET_PHOTOS,
-      payload: {
-          unsplash,
-          currentPage,
-          photoPerPage
-      }
+  		type: GET_PHOTOS
   	}
 }
 

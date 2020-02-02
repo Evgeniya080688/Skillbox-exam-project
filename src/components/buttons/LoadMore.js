@@ -4,7 +4,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 const LoadMore = ( props ) => {
-	const { loadMorePhotos, currentPage } = props;
+	const { currentPage } = props;
 
 	return (			
 		<React.Fragment>
@@ -13,7 +13,7 @@ const LoadMore = ( props ) => {
 	                type="submit"
 	                className="btn btn-loadmore"
 	                onClick = { () => {
-							loadMorePhotos(currentPage);
+							
 							}	
 						}		                
 	            >

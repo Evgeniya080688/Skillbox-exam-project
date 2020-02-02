@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { unsplash, code } from '../services/unsplash'
 
-import { getToken, getPhotos, loadMorePhotos, toggleLike } from '../store/actions'
+import { getPhotos } from '../store/actions'
 
 import PhotoList from '../components/photos/PhotoList';
 import LoadMore from '../components/buttons/LoadMore';
@@ -18,8 +18,8 @@ class Photos extends React.Component {
 		return (
 		<React.Fragment>
 		    <div className="photos"> 	        	
-		    	<PhotoList photos = { this.props.photos } toggleLike = { this.props.toggleLike } /> 
-		        <LoadMore currentPage = { this.props.currentPage } loadMorePhotos = { this.props.loadMorePhotos }/>
+		    	<PhotoList photos = { this.props.photos }  /> 
+		        <LoadMore currentPage = { this.props.currentPage }/>
 	      	</div> 
      	</React.Fragment> 
 		)
@@ -36,9 +36,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = ( dispatch ) => {
 	return {
-		getPhotos: ( unsplash, currentPage, photoPerPage ) => dispatch(getPhotos( unsplash, currentPage, photoPerPage )),
-		// loadMorePhotos: (currentPage) => dispatch(loadMorePhotos( currentPage )),
-		// toggleLike: ( unsplash, photo ) => dispatch(toggleLike ( unsplash, photo )),
+		getPhotos: () => dispatch(getPhotos()),
 	}
 }
 

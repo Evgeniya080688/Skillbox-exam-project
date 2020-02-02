@@ -1,6 +1,4 @@
-
 const initialState = {
-	token: null,
 	userName: null,
 	userLink: null,
   	photos: [],

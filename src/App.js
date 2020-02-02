@@ -12,10 +12,6 @@ class App extends React.Component {
 	constructor(props) {	
 	    super(props);	
 	 }
-	 
-	componentDidMount() {
-	
-	}
 
 	render() {
 		return (
@@ -33,18 +29,16 @@ class App extends React.Component {
 }  
 
 const mapStateToProps = state => {
-	const { token, userName, userLink, photos, currentPage, photoPerPage } = state;
+	const {userName, userLink } = state;
 	return {
 	    userName,
-	    userLink,
-	    photos
+	    userLink
 	}
 }
 
 const mapDispatchToProps = ( dispatch ) => {
 	return {
 		
-
 	}
 }
 

@@ -2,18 +2,16 @@ import './index.css';
 
 import React from 'react';
 import { Link } from 'react-router-dom'
-import { toggleClassLike } from '../../services/helpers';
 
 const Like = ( props ) => {
-    const { id, unsplash, toggleLike, likes } = props;
+    const { id, likes } = props;
 	return (			
 		<React.Fragment>
 			<button
                 type="button"
                 className="btn btn-like"
                 onClick = { () => {
-                        toggleLike(unsplash, id);
-                        toggleClassLike();
+                        
                     }
                 }                           
             >

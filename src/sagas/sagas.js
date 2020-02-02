@@ -1,8 +1,6 @@
 import { takeEvery, call, put, all } from "redux-saga/effects";
 import Unsplash from 'unsplash-js';
-import { select } from 'redux-saga';
-import { unsplash, code, authenticationUrl } from '../services/unsplash';
-import { getCookie, setCookie, deleteCookie} from '../services/helpers';
+import { unsplash } from '../services/unsplash';
 
 function* watchGetPhotos() {
     yield takeEvery("GET_PHOTOS", workGetPhotos);
