@@ -5,7 +5,6 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { getToken, getPhotos, getUser, toggleLike, loadMorePhotos } from './store/actions'
 import { unsplash, code } from './services/unsplash'
 
-import Header from './components/header/index.js';
 import Main from './components/main/index.js';
 
 class App extends React.Component {
@@ -16,10 +15,6 @@ class App extends React.Component {
 	render() {
 		return (
 		<React.Fragment>
-		    <Header 
-		    	userName = { this.props.userName }
-		    	userLink = {this.props.userLink }
-		    />
 		    <Main/>
 		</React.Fragment>
 		)
