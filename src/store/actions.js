@@ -6,23 +6,14 @@ export function getPhotos() {
   	}
 }
 
-export const getMorePhotos = ( currentPage ) => {
+export const getMorePhotos = () => {
 	return {
-		type: GET_MORE_PHOTOS,
-		payload: {
-			currentPage
-		}
+		type: GET_MORE_PHOTOS
+		
 	}
 }
 
-export const morePhotosLoaded = ( currentPage ) => {
-	return {
-		type: MORE_PHOTOS_LOADED,
-		payload: {
-			currentPage
-		}
-	}
-}
+
 
 
 

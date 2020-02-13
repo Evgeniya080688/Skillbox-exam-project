@@ -1,8 +1,5 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
-import { unsplash, code } from '../services/unsplash'
-
 import { getPhotos, getMorePhotos } from '../store/actions'
 
 import PhotoList from '../components/photos/PhotoList';
@@ -14,13 +11,19 @@ class Photos extends React.Component {
 		this.props.getPhotos();
 	}
 
-	render() {
+	render() {		
+		window.onscroll = function() {
+           	let scrolled = window.pageYOffset || document.documentElement.scrollTop;
+     		if (window.innerHeight + scrolled >= document.body.clientHeight - 300) {		
+		    	this.props.getMorePhotos();		    
+		    }
+		}        
 		return (
-		<React.Fragment>
+		<React.Fragment>			
 		    <div className="photos"> 	        	
-		    	<PhotoList photos = { this.props.photos }  /> 
+		    	<PhotoList photos = { this.props.photos }  />  		
 		        <LoadMore getMorePhotos = { this.props.getMorePhotos } currentPage = { this.props.currentPage }/>
-	      	</div> 
+	      	</div> 		    
      	</React.Fragment> 
 		)
 		
