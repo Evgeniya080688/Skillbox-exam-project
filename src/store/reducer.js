@@ -2,6 +2,7 @@ export const initialState = {
 	userName: null,
 	userLink: null,
   	photos: [],
+  	countPhotos: 18,
   	currentPage: 1
 };
 

@@ -1,10 +1,15 @@
-import { GET_PHOTOS, GET_MORE_PHOTOS } from "./action-types";
+//import { GET_PHOTOS, GET_MORE_PHOTOS } from "./action-types";
+export const GET_PHOTOS = 'GET_PHOTOS'
+export const GET_MORE_PHOTOS = 'GET_MORE_PHOTOS'
 
-export function getPhotos() {
+export const getPhotos = (countPhotos) => {
   	return { 
-  		type: GET_PHOTOS
+  		type: GET_PHOTOS,  		
+		countPhotos				
+		
   	}
 }
+
 
 export const getMorePhotos = () => {
 	return {

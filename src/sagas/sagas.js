@@ -1,28 +1,27 @@
-import { takeEvery, call, put, all, select } from "redux-saga/effects";
+import { takeEvery, call, put, all, select, take } from "redux-saga/effects";
 import { unsplash } from '../services/unsplash';
-import store from "../store/index.js";
 
-
-//let newState = store.getState();
-//const currentPage = 1;
-
+import * as actions from '../store/actions'
 
 function* watchGetPhotos() {
     yield takeEvery("GET_PHOTOS", workGetPhotos);
 }
 
 function* workGetPhotos() {
-    try {
-        const payload = yield call(getPhotos);        
+    try {        
+        const { countPhotos } = yield take(actions.GET_PHOTOS);
+        //const countPhotos = 18;
+        alert(countPhotos);
+        const payload = yield call(getPhotos, countPhotos);        
         yield put({ type: "PHOTOS_LOADED", payload });
     } catch (e) {
         yield put({ type: "LOADED_ERRORED", payload: e });
     }
 }
 
-function getPhotos() {    
+function getPhotos(countPhotos) {    
     return (
-        unsplash.photos.listPhotos(1, 18, 'latest')
+        unsplash.photos.listPhotos(1, countPhotos, 'latest')
             .then(res => res.text())
             .then(res => {
                 if (res != "Rate Limit Exceeded" && !JSON.parse(res).errors) 
