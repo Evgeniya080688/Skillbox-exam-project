@@ -1,26 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getPhotos, getMorePhotos } from '../store/actions'
+import { getPhotos } from '../store/actions'
 
 import PhotoList from '../components/photos/PhotoList';
-import LoadMore from '../components/buttons/LoadMore';
 
 import store from '../store/index';
 
 class Photos extends React.Component {
 
 	componentDidMount() {
-		let countPhotos = this.props.countPhotos;    
-		this.props.getPhotos(countPhotos);
+		let countPhotos = 18;
+		this.props.getPhotos();
+		
+
 		window.onscroll = function() {
-           	let scrolled = window.pageYOffset || document.documentElement.scrollTop;
-     		if (window.innerHeight + scrolled >= document.body.clientHeight - 300) {		
-		   		countPhotos += 18;
-		    	store.dispatch(getPhotos(countPhotos));	
-		    	//store.dispatch(getMorePhotos());		    
+			let loadingImages = false;
+	     	let scrolled = window.pageYOffset || document.documentElement.scrollTop;
+    	 	if (window.innerHeight + scrolled >= document.body.clientHeight - 300) {
+		    	if(!loadingImages) {
+		    		loadingImages = true;
+		    		store.dispatch(getPhotos());
+		    		loadingImages = false;	
+		    	}
 		    }
 		}  
 	}
+
 
 	render() {		
 		return (
@@ -38,16 +43,12 @@ class Photos extends React.Component {
 const mapStateToProps = state => {
 	return {
 	    photos: state.photos,
-	    currentPage: state.currentPage,
-	    countPhotos: state.countPhotos,
-	    
 	}
 }
 
 const mapDispatchToProps = ( dispatch ) => {
 	return {
-		getPhotos: (countPhotos) => dispatch(getPhotos(countPhotos)),
-		getMorePhotos: () => dispatch(getMorePhotos()),
+		getPhotos: () => dispatch(getPhotos()),
 	}
 }
 
