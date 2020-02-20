@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getPhotos } from '../store/actions'
+import { getPhotos, likeImageAction } from '../store/actions'
 
 import PhotoList from '../components/photos/PhotoList';
 
@@ -31,7 +31,7 @@ class Photos extends React.Component {
 		return (
 		<React.Fragment>			
 		    <div className="photos"> 	        	
-		    	<PhotoList photos = { this.props.photos }  />  		
+		    	<PhotoList photos = { this.props.photos }  likeImageAction = { this.props.likeImageAction } />  		
 	      	</div> 		    
      	</React.Fragment> 
 		)
@@ -49,6 +49,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = ( dispatch ) => {
 	return {
 		getPhotos: () => dispatch(getPhotos()),
+		likeImageAction: (photo, id) => dispatch(likeImageAction(photo, id))
 	}
 }
 

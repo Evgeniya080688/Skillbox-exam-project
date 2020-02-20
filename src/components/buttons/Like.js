@@ -4,19 +4,22 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 const Like = ( props ) => {
-    const { id, likes } = props;
+    const { id, likes, photo, likeImageAction, liked_by_user } = props;
+    
 	return (			
 		<React.Fragment>
 			<button
                 type="button"
                 className="btn btn-like"
-                onClick = { () => {
-                        
+                className= { liked_by_user ? "btn btn-like btn-like--liked" : "btn btn-like" }
+                onClick = { () => {                        
+                        likeImageAction(photo, id);
                     }
                 }                           
             >
                 <span>{ likes }</span>
-                <img src="../../img/like.svg" alt="Like" title="Like" />
+               
+
             </button>
 		</React.Fragment>	
 	);

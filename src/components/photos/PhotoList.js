@@ -5,7 +5,7 @@ import PhotoItem from './PhotoItem';
 import { connect } from 'react-redux';
 
 let PhotoList = (props) => {
-  const { photos } = props;  
+  const { photos, likeImageAction } = props;  
 
   return (
       <ul className="photos__list photos-list">
@@ -17,6 +17,7 @@ let PhotoList = (props) => {
                 <PhotoItem 
                   key={ id } 
                   photo={ photo }
+                  likeImageAction = { likeImageAction }
                   
                 />
               

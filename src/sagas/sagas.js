@@ -23,6 +23,7 @@ function getPhotos(countPhotos) {
         unsplash.photos.listPhotos(1, countPhotos, 'latest')
             .then(res => res.text())
             .then(res => {
+
                 if (res != "Rate Limit Exceeded" && !JSON.parse(res).errors) 
                     { return JSON.parse(res); }
                 else { console.error("Лимит запросов исчерпан!"); }
@@ -30,10 +31,51 @@ function getPhotos(countPhotos) {
     )
 }
 
+function* watchLikePhotos() {
+    yield takeEvery("TOGGLE_LIKE", workLikePhotos);
+}
+
+function* workLikePhotos() {
+    try {       
+        const { photo } = yield take(actions.TOGGLE_LIKE);        
+        const payload = yield call(likePhoto, photo);        
+        yield put({ type: "LIKE_ADD", payload });
+    } catch (e) {
+        yield put({ type: "LIKE_ERRORED", payload: e });
+    }
+}
+
+function likePhoto(photo) {
+  
+    if (photo.liked_by_user === true) {
+        return (
+            unsplash.photos.unlikePhoto(photo.id)
+              .then(res => res.text())
+              .then(res => {
+
+                  if (res != "Rate Limit Exceeded" && !JSON.parse(res).errors) 
+                    { return JSON.parse(res);  }
+                  else { console.error("Лимит запросов исчерпан!"); }
+              })
+          )
+    } else if (photo.liked_by_user === false) {   
+        return (
+            
+            unsplash.photos.likePhoto(photo.id)
+              .then(res => res.text())
+              .then(res => {         
+                  if (res != "Rate Limit Exceeded" && !JSON.parse(res).errors) { return JSON.parse(res);  }
+                  else { console.error("Лимит запросов исчерпан!"); }
+              })
+          )
+    }
+}
+
 
  export default function* rootSaga() {
   yield all([ 
     watchGetPhotos(),
+    watchLikePhotos()
   ])
 } 
 
