@@ -6,14 +6,16 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import store from "./store/index.js";
 import App from './App.js';
 import { unsplash, code } from './services/unsplash';
+import { getCookie, setCookie } from './services/helpers';
 
 if (code ){
-        //авторизируемся
-        unsplash.auth.userAuthentication(code)
+        //авторизируемся           
+    unsplash.auth.userAuthentication(code)
         .then(response => response.json())
-        .then((json) => {
-        // Сохраняем полученный токен для того, чтоб можно было выполнять какие-либо действия от имени пользователя
-        unsplash.auth.setBearerToken(json.access_token)});
+        .then(json => {
+            // Сохраняем полученный токен для того, чтоб можно было выполнять какие-либо действия от имени пользователя
+            unsplash.auth.setBearerToken(json.access_token);
+        });
         //показываем первый экран
     }
 else {
@@ -25,6 +27,9 @@ else {
 
         location.assign(authenticationUrl);
     }
+
+
+
 
 render(
 	<Provider store={store}>

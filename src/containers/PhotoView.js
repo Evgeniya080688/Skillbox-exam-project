@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { likeImageAction } from '../store/actions'
 
 import { unsplash } from '../services/unsplash';
 
@@ -15,7 +16,7 @@ let PhotoView = ( { match, history, photos } ) => {
 		<React.Fragment>
 			<div className="photo-view"> 			
 				<Back />
-				<Like id = { photo.id } likes = { photo.likes }/>
+				<Like id = { photo.id } likes = { photo.likes } likeImageAction = { photos.likeImageAction } photo = { photo } liked_by_user = { photo.liked_by_user } />
 				<PhotoCard photo = { photo } />	
 			</div>			    			
 		</React.Fragment>
@@ -31,7 +32,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = ( dispatch ) => {
 	return {
-		
+		likeImageAction: (photo, id) => dispatch(likeImageAction(photo, id))
 	}
 }
 

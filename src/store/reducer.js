@@ -1,6 +1,7 @@
 export const initialState = {
 	userName: null,
 	userLink: null,
+	token: null,
   	photos: [],
   	countPhotos: 18,
   	currenPhoto: null
@@ -9,7 +10,11 @@ export const initialState = {
 
 const reducer = ( state = initialState, action ) => {
 	let newState = {...state};
-	switch (action.type) {	
+	switch (action.type) {
+		case "TOKEN_LOADED":
+			return { ...state, token: action.payload }
+		case "GET_USER_SUCSESS":
+			return { ...state, userName: action.payload.first_name, userLink: action.payload.username }
 		case "PHOTOS_LOADED":
 			return { ...state, photos: action.payload, countPhotos: state.countPhotos + 18}
 		case "LIKE_ADD":

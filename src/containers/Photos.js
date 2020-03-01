@@ -1,17 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getPhotos, likeImageAction } from '../store/actions'
+import { getAuth, getPhotos, likeImageAction, getUser } from '../store/actions'
 
 import PhotoList from '../components/photos/PhotoList';
+import LoadMore from '../components/buttons/LoadMore';
 
 import store from '../store/index';
 
 class Photos extends React.Component {
+	constructor (props) {
+        super(props);
+    }
+
+    componentWillUnmount() {
+    	window.onscroll = function() {
+
+    	}	
+    }
 
 	componentDidMount() {
 		let countPhotos = 18;
 		this.props.getPhotos();
-		
+		this.props.getUser();
+		this.props.getAuth();
 
 		window.onscroll = function() {
 			let loadingImages = false;
@@ -19,8 +30,8 @@ class Photos extends React.Component {
     	 	if (window.innerHeight + scrolled >= document.body.clientHeight - 300) {
 		    	if(!loadingImages) {
 		    		loadingImages = true;
-		    		store.dispatch(getPhotos());
-		    		loadingImages = false;	
+		    		const res = store.dispatch(getPhotos());
+		    		if (res) { loadingImages = false;}	
 		    	}
 		    }
 		}  
@@ -28,11 +39,12 @@ class Photos extends React.Component {
 
 
 	render() {		
+		const { photos, likeImageAction } = this.props;
 		return (
 		<React.Fragment>			
 		    <div className="photos"> 	        	
-		    	<PhotoList photos = { this.props.photos }  likeImageAction = { this.props.likeImageAction } />  		
-	      	</div> 		    
+		    	<PhotoList photos = { photos }  likeImageAction = { likeImageAction } />  		
+	      	</div> 	
      	</React.Fragment> 
 		)
 		
@@ -43,12 +55,15 @@ class Photos extends React.Component {
 const mapStateToProps = state => {
 	return {
 	    photos: state.photos,
+	    currentPage: state.currentPage,
 	}
 }
 
 const mapDispatchToProps = ( dispatch ) => {
 	return {
+		getAuth: () => dispatch(getAuth()),
 		getPhotos: () => dispatch(getPhotos()),
+		getUser: () => dispatch(getUser()),
 		likeImageAction: (photo, id) => dispatch(likeImageAction(photo, id))
 	}
 }

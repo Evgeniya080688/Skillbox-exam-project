@@ -11,3 +11,6 @@ export const unsplash = new Unsplash({
 
 export const code = location.search.split( 'code=' )[1]; 
 
+
+
+
