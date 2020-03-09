@@ -3,18 +3,23 @@ import './index.css';
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-const Back = () => {
+ const comeBack = e => {
+    e.stopPropagation()
+    history.goBack()
+  }
+
+const Back = (props) => {
+	const { comeBack } = props;
 
 	return (			
 		<React.Fragment>
-		<Link to='/'>
 			<button
                 type="button"
-                className="btn btn-back"            
+                className="btn btn-back" 
+                onClick={ comeBack }           
             >
                 Back
             </button>
-        </Link>	
 		</React.Fragment>	
 	);
 }

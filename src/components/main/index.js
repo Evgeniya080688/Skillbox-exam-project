@@ -8,7 +8,8 @@ import PhotoView from '../../containers/PhotoView'
 const Main = (props) => {  
 	return (
 	    	<main>
-		    	<Switch>    		
+		    	<Switch>
+  		
 			     	<Route exact path="/" component={ Photos } />		     		
 		     		<Route path="/image/:id" component={ PhotoView } />
 		     		<Route component={ PageNotFound } />

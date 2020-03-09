@@ -1,0 +1,26 @@
+.main-header {
+	display: flex;
+	justify-content: space-between;
+	min-height: 3em;
+	background-color: rgb(205, 220, 57);
+	color: white;
+	padding: 1em;
+	margin: 0;
+}
+
+.nav-logo__img {
+	color: white;
+}
+
+.main-nav {
+	width: 98%;
+	display: flex;
+	justify-content: space-between;
+	padding: 0.5em;
+}
+
+.nav-author {
+	cursor: pointer;
+	color: white;
+	text-decoration: none;
+}

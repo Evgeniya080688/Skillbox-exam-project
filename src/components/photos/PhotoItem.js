@@ -14,7 +14,7 @@ const PhotoItem = ( props ) => {
 	return (	
 		<li className="photos-list__item photo-item" >		
 			<figure className="photo-item__figure">
-				<div className="photo-item__picture">
+				<div className="photo-item__picture" >
 					<Link to={{ pathname: `/image/${id}` }}>
 		         		<img alt={ description } src={urls.thumb} />
 		        	</Link>

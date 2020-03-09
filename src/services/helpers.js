@@ -39,3 +39,4 @@ export function setCookie(name, value, options) {
 
     document.cookie = updatedCookie;
 }
+

@@ -19,7 +19,6 @@ const Like = ( props ) => {
             >
                 <span>{ likes }</span>
                
-
             </button>
 		</React.Fragment>	
 	);

@@ -10,13 +10,18 @@ import Like from '../components/buttons/Like';
 import Back from '../components/buttons/Back';
 
 let PhotoView = ( { match, history, photos } ) => {
-	const photo = photos.filter(photo => photo.id === match.params.id)[0]
+	const photo = photos.filter(photo => photo.id === match.params.id)[0];
+
+	const comeBack = e => {
+	    e.stopPropagation()
+	    history.goBack()
+	 }
 
 	return (
 		<React.Fragment>
-			<div className="photo-view"> 			
-				<Back />
-				<Like id = { photo.id } likes = { photo.likes } likeImageAction = { photos.likeImageAction } photo = { photo } liked_by_user = { photo.liked_by_user } />
+			<div className="photo-view"> 		
+	            <Back comeBack = { comeBack } />
+				<Like id = { photo.id } likes = { photo.likes } likeImageAction = { likeImageAction } photo = { photo } liked_by_user = { photo.liked_by_user } />
 				<PhotoCard photo = { photo } />	
 			</div>			    			
 		</React.Fragment>
@@ -36,9 +41,8 @@ const mapDispatchToProps = ( dispatch ) => {
 	}
 }
 
-PhotoView = connect(
+export default PhotoView = connect(
 	mapStateToProps,
 	mapDispatchToProps
 )(PhotoView);
 
-export default PhotoView;

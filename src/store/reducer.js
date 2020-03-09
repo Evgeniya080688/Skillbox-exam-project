@@ -3,8 +3,8 @@ export const initialState = {
 	userLink: null,
 	token: null,
   	photos: [],
-  	countPhotos: 18,
-  	currenPhoto: null
+  	countPhotos: 15,
+  	photosPage: 1
   	
 };
 
@@ -16,7 +16,13 @@ const reducer = ( state = initialState, action ) => {
 		case "GET_USER_SUCSESS":
 			return { ...state, userName: action.payload.first_name, userLink: action.payload.username }
 		case "PHOTOS_LOADED":
-			return { ...state, photos: action.payload, countPhotos: state.countPhotos + 18}
+			return { ...state, photos: action.payload }
+		case "MORE_PHOTOS_LOADED":
+			return { 
+				...state, 
+				photos: [...state.photos, ...action.payload ], 
+				photosPage: state.photosPage+1,
+			 	}
 		case "LIKE_ADD":
 			newState.photos = state.photos.map((photo, id)=>{
             if(id === action.photo.id){

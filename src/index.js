@@ -8,25 +8,25 @@ import App from './App.js';
 import { unsplash, code } from './services/unsplash';
 import { getCookie, setCookie } from './services/helpers';
 
-if (code ){
-        //авторизируемся           
-    unsplash.auth.userAuthentication(code)
-        .then(response => response.json())
-        .then(json => {
-            // Сохраняем полученный токен для того, чтоб можно было выполнять какие-либо действия от имени пользователя
-            unsplash.auth.setBearerToken(json.access_token);
-        });
-        //показываем первый экран
-    }
-else {
-        //нет кода - перенаправляем на страницу авторизации
-        const authenticationUrl = unsplash.auth.getAuthenticationUrl([
-            "public",
-            "write_likes",
-        ]);
+// if (code ){
+//         //авторизируемся           
+//     unsplash.auth.userAuthentication(code)
+//         .then(response => response.json())
+//         .then(json => {
+//             // Сохраняем полученный токен для того, чтоб можно было выполнять какие-либо действия от имени пользователя
+//             unsplash.auth.setBearerToken(json.access_token);
+//         });
+//         //показываем первый экран
+//     }
+// else {
+//         //нет кода - перенаправляем на страницу авторизации
+//         const authenticationUrl = unsplash.auth.getAuthenticationUrl([
+//             "public",
+//             "write_likes",
+//         ]);
 
-        location.assign(authenticationUrl);
-    }
+//         location.assign(authenticationUrl);
+//     }
 
 
 

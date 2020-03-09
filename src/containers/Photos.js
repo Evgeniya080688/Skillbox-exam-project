@@ -1,11 +1,14 @@
 import React from 'react';
+import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getAuth, getPhotos, likeImageAction, getUser } from '../store/actions'
+import { getAuth, getPhotos, getMorePhotos, likeImageAction, getUser } from '../store/actions';
+import loadMoreByScroll from '../services/helpers.js';
 
 import PhotoList from '../components/photos/PhotoList';
 import LoadMore from '../components/buttons/LoadMore';
 
 import store from '../store/index';
+import { unsplash } from '../services/unsplash';
 
 class Photos extends React.Component {
 	constructor (props) {
@@ -13,40 +16,40 @@ class Photos extends React.Component {
     }
 
     componentWillUnmount() {
-    	window.onscroll = function() {
 
-    	}	
     }
 
 	componentDidMount() {
-		let countPhotos = 18;
-		this.props.getPhotos();
-		this.props.getUser();
-		this.props.getAuth();
+		
+		this.props.getPhotos();	
+		// window.addEventListener('scroll', function() {
+		// 	let loadingImages = false;
+  //           let scrolled = window.pageYOffset || document.documentElement.scrollTop;
+  //           if (window.innerHeight + scrolled >= document.body.clientHeight - 400) {
+  //               if(!loadingImages) {
+  //                   loadingImages = true;
+  //                   const res = store.dispatch(getMorePhotos());
+  //                   alert('scroll');
+  //                   if (res) { loadingImages = false;}  
+  //               }
+  //           }
+		// } );
 
-		window.onscroll = function() {
-			let loadingImages = false;
-	     	let scrolled = window.pageYOffset || document.documentElement.scrollTop;
-    	 	if (window.innerHeight + scrolled >= document.body.clientHeight - 300) {
-		    	if(!loadingImages) {
-		    		loadingImages = true;
-		    		const res = store.dispatch(getPhotos());
-		    		if (res) { loadingImages = false;}	
-		    	}
-		    }
-		}  
+		
 	}
 
 
-	render() {		
-		const { photos, likeImageAction } = this.props;
+	render() {	
+
 		return (
-		<React.Fragment>			
-		    <div className="photos"> 	        	
-		    	<PhotoList photos = { photos }  likeImageAction = { likeImageAction } />  		
-	      	</div> 	
-     	</React.Fragment> 
-		)
+			<React.Fragment>			
+			    <div className="photos"> 	        	
+			    	<PhotoList photos = { this.props.photos }  likeImageAction = { this.props.likeImageAction } />  		
+		      	</div> 	
+		      	<LoadMore getMorePhotos = { this.props.getMorePhotos } />
+	     	</React.Fragment> 
+			)
+	
 		
 	}
 
@@ -55,14 +58,15 @@ class Photos extends React.Component {
 const mapStateToProps = state => {
 	return {
 	    photos: state.photos,
-	    currentPage: state.currentPage,
+	    token: state.token
 	}
 }
 
 const mapDispatchToProps = ( dispatch ) => {
 	return {
-		getAuth: () => dispatch(getAuth()),
+		
 		getPhotos: () => dispatch(getPhotos()),
+		getMorePhotos: () => dispatch(getMorePhotos()),
 		getUser: () => dispatch(getUser()),
 		likeImageAction: (photo, id) => dispatch(likeImageAction(photo, id))
 	}

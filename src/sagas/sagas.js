@@ -14,49 +14,39 @@ function* workAuth() {
     try {
     const payload = yield call(getAuth);
     yield put({ type: "TOKEN_LOADED", payload });
+    
   } catch (e) {
     yield put({ type: "API_ERRORED", payload: e });
   }
 }
 
-function getAuth() {    
-    if (getCookie("token")) {
-        unsplash.auth.setBearerToken(getCookie("token"));        
-        return getCookie("token");
-
-    } else {
-        if (code) {  
-                unsplash.auth.userAuthentication(code)
-                    .then((res) => res.json())
-                    .then((json) => {
-                        alert("token "+json.access_token);
-                        if (json.error) {
-                          const authenticationUrl = unsplash.auth.getAuthenticationUrl([
-                              "public",
-                              "write_likes",
-                          ]);
-                          location.assign(authenticationUrl);
-                        }
-                        else {
-                            if (JSON.stringify(json) && JSON.stringify(json)!= "Rate Limit Exceeded") {
-                                window.localStorage['keycode'] = code;
-                                let date = new Date;
-                                date.setDate(date.getDate() + 1);
-                                setCookie("token", json.access_token, {
-                                    expires: date.toUTCString()
-                                });
-
-                                unsplash.auth.setBearerToken(json.access_token);
-                                return json.access_token;
-                            }
-                            else { return console.error("Лимит запросов исчерпан!"); }
-                        }
-                    });
-                    
-        }
-                 
-       
-    }
+function getAuth() {   
+   
+    //авторизируемся           
+    return unsplash.auth.userAuthentication(code)
+        .then(response => response.json())
+        .then(json => {
+            // Сохраняем полученный токен для того, чтоб можно было выполнять какие-либо действия от имени пользователя
+            if (json.error) {
+                  const authenticationUrl = unsplash.auth.getAuthenticationUrl([
+                  "public",
+                  "write_likes",
+              ]);
+              location.assign(authenticationUrl);
+            }
+            else {
+                if (JSON.stringify(json) && JSON.stringify(json)!= "Rate Limit Exceeded") {
+                    unsplash.auth.setBearerToken(json.access_token);
+                    //alert(json.access_token);
+                    //getUser();
+                    return json.access_token;}
+                else {
+                    return console.error("Лимит запросов исчерпан!");
+                }
+            }
+            
+        });
+            
  
 }
 
@@ -70,16 +60,17 @@ function* workGetPhotos() {
     try {       
         const state = yield select();
         const countPhotos = state.countPhotos;
-        const payload = yield call(getPhotos, countPhotos);        
+        const photosPage = state.photosPage;
+        const payload = yield call(getPhotos, photosPage, countPhotos);        
         yield put({ type: "PHOTOS_LOADED", payload });
     } catch (e) {
         yield put({ type: "LOADED_ERRORED", payload: e });
     }
 }
 
-function getPhotos(countPhotos) {    
+function getPhotos(photosPage, countPhotos) {    
     return (
-        unsplash.photos.listPhotos(1, countPhotos, 'latest')
+        unsplash.photos.listPhotos(photosPage, countPhotos, 'latest')
             .then(res => res.text())
             .then(res => {
                 if (res != "Rate Limit Exceeded" && !JSON.parse(res).errors) 
@@ -87,6 +78,24 @@ function getPhotos(countPhotos) {
                 else { console.error("Лимит запросов исчерпан!"); }
             })
     )
+}
+
+//Get more photos
+
+function* watchGetMorePhotos() {
+    yield takeEvery("GET_MORE_PHOTOS", workGetMorePhotos);
+}
+
+function* workGetMorePhotos() {
+    try {       
+        const state = yield select();
+        const countPhotos = state.countPhotos;
+        const photosPage = state.photosPage+1;
+        const payload = yield call(getPhotos, photosPage, countPhotos);        
+        yield put({ type: "MORE_PHOTOS_LOADED", payload });
+    } catch (e) {
+        yield put({ type: "MORE_LOADED_ERRORED", payload: e });
+    }
 }
 
 //Like Photos
@@ -105,8 +114,8 @@ function* workLikePhotos() {
     }
 }
 
+
 function likePhoto(photo) {
-  
     if (photo.liked_by_user === true) {
         return (
             unsplash.photos.unlikePhoto(photo.id)
@@ -138,7 +147,8 @@ function* watchGetUser() {
 
 function* workGetUser() {
     try {       
-        const payload = yield call(getUser);
+        //const { unsplash } = yield take(actions.GET_AUTH);
+        const payload = yield call(getUser );
         yield put({ type: "GET_USER_SUCSESS", payload });
     } catch (e) {
         yield put({ type: "USER_ERRORED", payload: e });
@@ -146,8 +156,8 @@ function* workGetUser() {
 }
 
 function getUser() {
-    return (
-        unsplash.currentUser.profile()
+        alert('hh');
+        return ( unsplash.currentUser.profile()
             .then(res => res.text())
             .then(res => {
               alert("user "+res);
@@ -155,7 +165,8 @@ function getUser() {
                     { return JSON.parse(res); }
                 else { console.error("Лимит запросов исчерпан!"); }
       })
-    )
+      )
+    
 }
 
  export default function* rootSaga() {
@@ -163,6 +174,7 @@ function getUser() {
     watchAuth(),
     watchGetUser(),
     watchGetPhotos(),
+    watchGetMorePhotos(),
     watchLikePhotos()
   ])
 } 
