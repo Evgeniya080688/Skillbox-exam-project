@@ -5,7 +5,7 @@ import Main from './components/main/index.js';
 import Header from './components/header/index.js';
 import { unsplash, code } from './services/unsplash';
 
-import { getAuth, getUser } from './store/actions';
+import { getAuth } from './store/actions';
 
 
 class App extends React.Component {
@@ -16,7 +16,6 @@ class App extends React.Component {
 	componentDidMount() {
 		if (code) {
 			this.props.getAuth();
-			//unsplash.auth.setBearerToken( this.props.token );
 			
 		}
 		else {
@@ -28,11 +27,6 @@ class App extends React.Component {
 
 	        location.assign(authenticationUrl);
 		}
-
-		if (this.props.token !== null )
-			{
-				this.props.getUser( );
-			}	
 		
 	}
 
@@ -58,7 +52,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = ( dispatch ) => {
 	return {
 		getAuth: () => dispatch(getAuth()),
-		getUser: () => dispatch(getUser( )),
 	}
 }
 

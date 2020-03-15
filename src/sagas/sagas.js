@@ -12,8 +12,9 @@ function* watchAuth() {
 
 function* workAuth() {
     try {
-    const payload = yield call(getAuth);
-    yield put({ type: "TOKEN_LOADED", payload });
+    const token = yield call(getAuth);
+    const user = yield call(getUser);
+    yield put({ type: "TOKEN_LOADED", payload: { token, user} });
     
   } catch (e) {
     yield put({ type: "API_ERRORED", payload: e });
@@ -141,26 +142,24 @@ function likePhoto(photo) {
 
 //Get user
 
-function* watchGetUser() {
-    yield takeEvery("GET_USER", workGetUser);
-}
+// function* watchGetUser() {
+//     yield takeEvery("GET_USER", workGetUser);
+// }
 
-function* workGetUser() {
-    try {       
-        //const { unsplash } = yield take(actions.GET_AUTH);
-        const payload = yield call(getUser );
-        yield put({ type: "GET_USER_SUCSESS", payload });
-    } catch (e) {
-        yield put({ type: "USER_ERRORED", payload: e });
-    }
-}
+// function* workGetUser() {
+//     try {       
+//         //const { unsplash } = yield take(actions.GET_AUTH);
+//         const payload = yield call(getUser );
+//         yield put({ type: "GET_USER_SUCSESS", payload });
+//     } catch (e) {
+//         yield put({ type: "USER_ERRORED", payload: e });
+//     }
+// }
 
 function getUser() {
-        alert('hh');
         return ( unsplash.currentUser.profile()
             .then(res => res.text())
             .then(res => {
-              alert("user "+res);
                 if (res && res != "Rate Limit Exceeded" && !JSON.parse(res).errors) 
                     { return JSON.parse(res); }
                 else { console.error("Лимит запросов исчерпан!"); }
@@ -172,7 +171,6 @@ function getUser() {
  export default function* rootSaga() {
   yield all([ 
     watchAuth(),
-    watchGetUser(),
     watchGetPhotos(),
     watchGetMorePhotos(),
     watchLikePhotos()

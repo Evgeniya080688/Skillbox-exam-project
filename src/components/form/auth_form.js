@@ -22,7 +22,7 @@ const AuthForm = (props) => {
 		        		</a>
 		        	</li>
 		        	<li className="auth-menu__item">
-		        		<Link to={{ pathname: `/` }}>
+		        		<Link to={{ pathname: `/home/` }}>
 		        			<span>Выход</span>
 		        		</Link>
 		        	</li>

@@ -23,12 +23,6 @@ export function getMorePhotos() {
   }
 }
 
-export function getUser( ) {
-  return {
-    type: GET_USER,
-  }
-}
-
 export function likeImageAction(photo, id) {
     return {
       type: TOGGLE_LIKE,
