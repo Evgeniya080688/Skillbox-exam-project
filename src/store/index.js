@@ -9,10 +9,10 @@ const initialiseSagaMiddleware = createSagaMiddleware();
 const storeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
-  reducer,
-  storeEnhancers(
-    applyMiddleware(initialiseSagaMiddleware)
-  )
+	reducer,
+	storeEnhancers(
+	    applyMiddleware(initialiseSagaMiddleware)
+	)
 );
 
 initialiseSagaMiddleware.run(rootSaga);

@@ -24,8 +24,25 @@ const reducer = ( state = initialState, action ) => {
 				photosPage: state.photosPage+1,
 			 	}
 		case "LIKE_ADD":
-			newState.photos = state.photos.map((photo, id)=>{
-            if(id === action.photo.id){
+	  //       return {
+			// 	...state,
+			// 	photos: state.photos.map((photo)=>{
+			// 		if(photo.id === action.payload.photo.id){
+		 //                if (photo.liked_by_user == true) {
+		 //                    photo.liked_by_user = false;
+		 //                    photo.likes--;
+		 //                } else if (photo.liked_by_user == false) {
+		 //                    photo.liked_by_user = true;
+		 //                    photo.likes++;
+		 //                }
+		 //                return photo;
+			//         }
+			//         return photo;
+			// 	}) 
+			// }
+
+			newState.photos = state.photos.map((photo)=>{
+            if(photo.id === action.payload.photo.id){
                 if (photo.liked_by_user == true) {
                     photo.liked_by_user = false;
                     photo.likes--;
@@ -34,10 +51,10 @@ const reducer = ( state = initialState, action ) => {
                     photo.likes++;
                 }
                 return photo;
-	            }
-	            return photo;
-	        });
-	        return {...newState};
+            }
+            return photo;
+        });
+        return {...newState};
     	default:
      		return state;
 	}

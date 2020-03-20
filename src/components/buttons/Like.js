@@ -11,11 +11,15 @@ const Like = ( props ) => {
 			<button
                 type="button"
                 className="btn btn-like"
-                className= { liked_by_user ? "btn btn-like btn-like--liked" : "btn btn-like" }
-                onClick = { () => {                        
-                        likeImageAction(photo, id);
-                    }
-                }                           
+                className= { liked_by_user ? "btn btn-like btn-like--liked" : "btn btn-like" }   
+                onClick = { () => {
+                        likeImageAction(photo, id);   
+                    }   
+                }  
+                // onClick = { 
+                //         likeImageAction   
+                //     }   
+                                    
             >
                 <span>{ likes }</span>
                

@@ -6,30 +6,28 @@ export const GET_USER = 'GET_USER'
 export const GET_AUTH = 'GET_AUTH'
 
 export function getAuth() {
-  return {
-    type: GET_AUTH    
-  }
+    return {
+        type: GET_AUTH    
+    }
 }
 
 export function getPhotos() {
-  return {
-    type: GET_PHOTOS,  
-  }
+    return {
+        type: GET_PHOTOS,  
+    }
 }
 
 export function getMorePhotos() {
-  return {
-    type: GET_MORE_PHOTOS,  
-  }
+    return {
+        type: GET_MORE_PHOTOS,  
+    }
 }
 
 export function likeImageAction(photo, id) {
     return {
-      type: TOGGLE_LIKE,
-    	photo,
-    	id,
-        
-        
+        type: TOGGLE_LIKE,
+      	photo,
+      	id, 
     }
 }
 

@@ -1,6 +1,5 @@
 import { takeEvery, call, put, all, select, take } from "redux-saga/effects";
 import { unsplash, code } from '../services/unsplash';
-import { getCookie, setCookie } from '../services/helpers';
 
 import * as actions from '../store/actions'
 
@@ -22,33 +21,27 @@ function* workAuth() {
 }
 
 function getAuth() {   
-   
     //авторизируемся           
     return unsplash.auth.userAuthentication(code)
         .then(response => response.json())
         .then(json => {
             // Сохраняем полученный токен для того, чтоб можно было выполнять какие-либо действия от имени пользователя
             if (json.error) {
-                  const authenticationUrl = unsplash.auth.getAuthenticationUrl([
-                  "public",
-                  "write_likes",
+                const authenticationUrl = unsplash.auth.getAuthenticationUrl([
+                    "public",
+                    "write_likes",
               ]);
               location.assign(authenticationUrl);
             }
             else {
                 if (JSON.stringify(json) && JSON.stringify(json)!= "Rate Limit Exceeded") {
                     unsplash.auth.setBearerToken(json.access_token);
-                    //alert(json.access_token);
-                    //getUser();
                     return json.access_token;}
                 else {
                     return console.error("Лимит запросов исчерпан!");
                 }
             }
-            
         });
-            
- 
 }
 
 //Get photos
@@ -122,21 +115,22 @@ function likePhoto(photo) {
             unsplash.photos.unlikePhoto(photo.id)
               .then(res => res.text())
               .then(res => {
-
+                  // alert(res);
                   if (res != "Rate Limit Exceeded" && !JSON.parse(res).errors) 
-                    { return JSON.parse(res);  }
+                      { return JSON.parse(res);  }
                   else { console.error("Лимит запросов исчерпан!"); }
               })
           )
     } else if (photo.liked_by_user === false) {   
-        return (            
+        return (           
             unsplash.photos.likePhoto(photo.id)
               .then(res => res.text())
-              .then(res => {         
+              .then(res => {     
+                  // alert(res);    
                   if (res != "Rate Limit Exceeded" && !JSON.parse(res).errors) { return JSON.parse(res);  }
                   else { console.error("Лимит запросов исчерпан!"); }
               })
-          )
+         ) 
     }
 }
 
@@ -169,12 +163,12 @@ function getUser() {
 }
 
  export default function* rootSaga() {
-  yield all([ 
-    watchAuth(),
-    watchGetPhotos(),
-    watchGetMorePhotos(),
-    watchLikePhotos()
-  ])
+    yield all([ 
+        watchAuth(),
+        watchGetPhotos(),
+        watchGetMorePhotos(),
+        watchLikePhotos()
+    ])
 } 
 
   

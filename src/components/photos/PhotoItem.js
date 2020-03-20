@@ -7,7 +7,7 @@ import Like from '../buttons/Like';
 import { convertDate } from '../../services/helpers';
 
 const PhotoItem = ( props ) => {	
-	const { photo, likeImageAction } = props;
+	const { photo, likeImageAction, getPhotos } = props;
 	const { id, urls, description, likes, user, updated_at, liked_by_user } = props.photo;
 	const date = convertDate( updated_at );
 

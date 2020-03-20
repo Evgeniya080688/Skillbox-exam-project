@@ -1,8 +1,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getAuth, getPhotos, getMorePhotos, likeImageAction, getUser } from '../store/actions';
-import loadMoreByScroll from '../services/helpers.js';
+import { getPhotos, getMorePhotos, likeImageAction } from '../store/actions';
 
 import PhotoList from '../components/photos/PhotoList';
 import LoadMore from '../components/buttons/LoadMore';
@@ -20,7 +19,6 @@ class Photos extends React.Component {
     }
 
 	componentDidMount() {
-		
 		this.props.getPhotos();	
 		// window.addEventListener('scroll', function() {
 		// 	let loadingImages = false;
@@ -40,13 +38,14 @@ class Photos extends React.Component {
 
 
 	render() {	
+		const { photos, likeImageAction, getMorePhotos } = this.props;
 
 		return (
 			<React.Fragment>			
 			    <div className="photos"> 	        	
-			    	<PhotoList photos = { this.props.photos }  likeImageAction = { this.props.likeImageAction } />  		
+			    	<PhotoList photos = { photos }  likeImageAction = { likeImageAction }  getPhotos = { getPhotos }/>  		
 		      	</div> 	
-		      	<LoadMore getMorePhotos = { this.props.getMorePhotos } />
+		      	<LoadMore getMorePhotos = { getMorePhotos } />
 	     	</React.Fragment> 
 			)
 	
@@ -64,18 +63,15 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = ( dispatch ) => {
 	return {
-		
 		getPhotos: () => dispatch(getPhotos()),
 		getMorePhotos: () => dispatch(getMorePhotos()),
-		getUser: () => dispatch(getUser()),
 		likeImageAction: (photo, id) => dispatch(likeImageAction(photo, id))
 	}
 }
 
 
-Photos = connect(
+export default connect(
 	mapStateToProps,
 	mapDispatchToProps
 )(Photos);
 
-export default Photos;

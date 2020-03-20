@@ -16,7 +16,6 @@ class App extends React.Component {
 	componentDidMount() {
 		if (code) {
 			this.props.getAuth();
-			
 		}
 		else {
 		//нет кода - перенаправляем на страницу авторизации
@@ -33,8 +32,8 @@ class App extends React.Component {
 	render() {
 		return (
 		<React.Fragment>
-			<Header userName = { this.props.userName } userLink = { this.props.userLink }/>
-		    <Main token = { this.props.token }/>
+			<Header/>
+		    <Main />
 		</React.Fragment>
 		)
 		
@@ -44,8 +43,6 @@ class App extends React.Component {
 const mapStateToProps = state => {
 	return {
 	    token: state.token,
-	    userName: state.userName,
-	    userLink: state.userLink
 	}
 }
 
@@ -55,12 +52,10 @@ const mapDispatchToProps = ( dispatch ) => {
 	}
 }
 
-App = connect(
+export default connect(
 	mapStateToProps,
 	mapDispatchToProps
 )(App);
 
-
-export default App;
 
 
