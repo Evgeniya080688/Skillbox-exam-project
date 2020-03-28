@@ -5,7 +5,7 @@ const Home = () => {
         "public",
         "write_likes",
     ]);
-  	window.location.assign('authenticationUrl')
+  	window.location.assign( authenticationUrl )
   	return null
 }
 
