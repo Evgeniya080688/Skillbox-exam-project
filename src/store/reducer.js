@@ -5,7 +5,8 @@ export const initialState = {
   	photos: [],
   	countPhotos: 15,
   	photosPage: 1,
-  	currentPhoto: null
+  	currentPhoto: null,
+  	loadingPhotos: false
   	
 };
 
@@ -20,11 +21,14 @@ const reducer = ( state = initialState, action ) => {
 			return { ...state, currentPhoto: action.photo }
 		case "PHOTOS_LOADED":
 			return { ...state, photos: action.payload }
+		case "LOADING_CONTROL":
+			return { ...state, loadingPhotos: true}
 		case "MORE_PHOTOS_LOADED":
 			return { 
 				...state, 
 				photos: [...state.photos, ...action.payload ], 
 				photosPage: state.photosPage+1,
+				loadingPhotos: false
 			 	}
 		case "LIKE_ADD":
 			newState.photos = state.photos.map((photo)=>{

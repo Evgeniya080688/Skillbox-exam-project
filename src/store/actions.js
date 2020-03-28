@@ -5,6 +5,7 @@ export const TOGGLE_LIKE = 'TOGGLE_LIKE'
 export const GET_USER = 'GET_USER'
 export const GET_AUTH = 'GET_AUTH'
 export const GET_CURRENT_PHOTO = 'GET_CURRENT_PHOTO'
+export const LOADING_CONTROL = 'LOADING_CONTROL'
 
 export function getAuth() {
     return {
@@ -18,9 +19,15 @@ export function getPhotos() {
     }
 }
 
-export function getMorePhotos() {
+export function getMorePhotos(loadingPhotos) {
     return {
-        type: GET_MORE_PHOTOS,  
+        type: GET_MORE_PHOTOS, 
+    }
+}
+
+export function loadingControl() {
+    return {
+        type: LOADING_CONTROL
     }
 }
 
