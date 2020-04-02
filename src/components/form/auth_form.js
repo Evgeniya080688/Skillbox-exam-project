@@ -10,7 +10,6 @@ const AuthForm = (props) => {
 	return (		        
     	<React.Fragment>
     		<div className="auth-form">
-
 	        	<Link to={{ pathname: `/` }}>
 	    			<span className="auth-form__name">{ userName }</span>
 	        	</Link>
@@ -21,7 +20,7 @@ const AuthForm = (props) => {
 		        			<span>Профиль</span>
 		        		</a>
 		        	</li>
-		        	<li className="auth-menu__item">
+		        	<li className="auth-menu__item" >
 		        		<Link to={{ pathname: `/home/` }}>
 		        			<span>Выход</span>
 		        		</Link>

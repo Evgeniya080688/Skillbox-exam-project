@@ -11,9 +11,9 @@ const Main = (props) => {
 	    	<main>
 		    	<Switch>
   					<Route path = "/home/" component = { Home } />
-			     	<Route exact path="/" component={ Photos } />		     		
-		     		<Route path="/image/:id" component={ PhotoView } />
-		     		<Route component={ PageNotFound } />
+			     	<Route exact path="/" component = { Photos } />		     		
+		     		<Route path="/image/:id" component = { PhotoView } />
+		     		<Route component = { PageNotFound } />
 		    	</Switch>
 	    	</main>
 	    )

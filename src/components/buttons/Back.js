@@ -16,7 +16,7 @@ const Back = (props) => {
 			<button
                 type="button"
                 className="btn btn-back" 
-                onClick={ comeBack }           
+                onClick = { comeBack }           
             >
                 Back
             </button>

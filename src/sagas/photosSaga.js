@@ -19,18 +19,6 @@ function* workGetPhotos() {
     }
 }
 
-function getPhotos(photosPage, countPhotos) {    
-    return (
-        unsplash.photos.listPhotos(photosPage, countPhotos, 'latest')
-            .then(res => res.text())
-            .then(res => {
-                if (res != "Rate Limit Exceeded" && !JSON.parse(res).errors) 
-                    { return JSON.parse(res); }
-                else { console.error("Лимит запросов исчерпан!"); }
-            })
-    )
-}
-
 //Get more photos
 
 export function* watchGetMorePhotos() {
@@ -47,4 +35,16 @@ function* workGetMorePhotos() {
     } catch (e) {
         yield put({ type: "MORE_LOADED_ERRORED", payload: e });
     }
+}
+
+export function getPhotos(photosPage, countPhotos) {    
+    return (
+        unsplash.photos.listPhotos(photosPage, countPhotos, 'latest')
+            .then(res => res.text())
+            .then(res => {
+                if (res != "Rate Limit Exceeded" && !JSON.parse(res).errors) 
+                    { return JSON.parse(res); }
+                else { console.error("Лимит запросов исчерпан!"); }
+            })
+    )
 }

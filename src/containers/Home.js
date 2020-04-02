@@ -1,12 +1,46 @@
+import React from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { authOut } from '../store/actions';
+
 import { unsplash } from '../services/unsplash';
 
-const Home = () => {
-	const authenticationUrl = unsplash.auth.getAuthenticationUrl([
-        "public",
-        "write_likes",
-    ]);
-  	window.location.assign( authenticationUrl )
-  	return null
+class Home extends React.Component {
+	constructor (props) {
+        super(props);
+    }
+
+    componentDidMount() {
+		this.props.authOut();	
+	}
+
+	render() {	
+		return (
+			<React.Fragment>			
+			    <div>
+		  			<p className = "enter-text" >Войдите или зарегистрируйтесь</p>
+		  		</div>
+	     	</React.Fragment> 
+		)
+	
+		
+	}
+}	
+
+const mapStateToProps = state => {
+	return {
+	    
+	}
 }
 
-export default Home
+const mapDispatchToProps = ( dispatch ) => {
+	return {
+		authOut: () => dispatch( authOut() ),
+	}
+}
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Home);
+

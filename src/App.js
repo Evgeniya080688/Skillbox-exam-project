@@ -7,7 +7,6 @@ import { unsplash, code } from './services/unsplash';
 
 import { getAuth } from './store/actions';
 
-
 class App extends React.Component {
 	constructor(props) {	
 	    super(props);	

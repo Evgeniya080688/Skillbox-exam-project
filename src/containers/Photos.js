@@ -14,17 +14,12 @@ class Photos extends React.Component {
         super(props);
     }
 
-    componentWillUnmount() {
-
-    }
-
 	componentDidMount() {
 		window.addEventListener('scroll', function() {
             let scrolled = window.pageYOffset || document.documentElement.scrollTop;
             if (window.innerHeight + scrolled >= document.body.clientHeight - 300) {
        			const loadingPhotos = store.getState().loadingPhotos;
                 if (!loadingPhotos) {
-                	//alert('Загружаю...');
                 	store.dispatch(loadingControl());
                 	store.dispatch(getMorePhotos());		    
                 }
@@ -39,13 +34,11 @@ class Photos extends React.Component {
 
 		return (
 			<React.Fragment>			
-			    <div className="photos"> 	        	
+			    <div className = "photos"> 	        	
 			    	<PhotoList photos = { photos }  likeImageAction = { likeImageAction }  getCurrentPhoto = { getCurrentPhoto } />  		
 		      	</div> 	
 	     	</React.Fragment> 
-			)
-	
-		
+			)	
 	}
 
 } 
@@ -60,11 +53,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = ( dispatch ) => {
 	return {
-		getPhotos: () => dispatch(getPhotos()),
-		getMorePhotos: () => dispatch(getMorePhotos()),
-		likeImageAction: (photo, id) => dispatch(likeImageAction(photo, id)),
-		getCurrentPhoto: (photo) => dispatch(getCurrentPhoto(photo)),
-		loadingControl: () => dispatch(loadingControl())
+		getPhotos: () => dispatch( getPhotos() ),
+		getMorePhotos: () => dispatch( getMorePhotos() ),
+		likeImageAction: (photo, id) => dispatch( likeImageAction(photo, id) ),
+		getCurrentPhoto: (photo) => dispatch( getCurrentPhoto(photo) ),
+		loadingControl: () => dispatch( loadingControl() )
 	}
 }
 

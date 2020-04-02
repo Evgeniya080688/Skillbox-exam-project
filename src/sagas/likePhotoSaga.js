@@ -9,7 +9,6 @@ export default function* watchLikePhotos() {
 
 function* workLikePhotos() {
     try {       
-        //const { photo } = yield take(actions.TOGGLE_LIKE);    //здесь проблема 
         const state = yield select();
         const photo = state.currentPhoto;
         const payload = yield call(likePhoto, photo);        
@@ -18,7 +17,6 @@ function* workLikePhotos() {
         yield put({ type: "LIKE_ERRORED", payload: e });
     }
 }
-
 
 function likePhoto(photo) {
     if (photo.liked_by_user === true) {

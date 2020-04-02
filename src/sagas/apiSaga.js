@@ -1,20 +1,22 @@
-import { takeEvery, call, put } from "redux-saga/effects";
+import { takeEvery, select, call, put } from "redux-saga/effects";
 import { unsplash, code } from '../services/unsplash';
+
+import { getPhotos } from './photosSaga.js';
 
 export default function* watchAuth() {
     yield takeEvery("GET_AUTH", workAuth);
 }
 
 function* workAuth() {
-    try {
-    const token = yield call(getAuth);
-    const user = yield call(getUser);
-    const photos = yield call(getPhotos);
-    yield put({ type: "TOKEN_LOADED", payload: { token, user, photos } });
+    try {  
+        const token = yield call(getAuth);
+        const user = yield call(getUser);
+        const photos = yield call(getPhotos); 
+        yield put({ type: "TOKEN_LOADED", payload: { token, user, photos } });
     
-  } catch (e) {
-    yield put({ type: "API_ERRORED", payload: e });
-  }
+    } catch (e) {
+        yield put({ type: "API_ERRORED", payload: e });
+    }
 }
 
 function getAuth() {   
@@ -53,17 +55,7 @@ function getUser() {
     
 }
 
-function getPhotos(photosPage, countPhotos) {    
-    return (
-        unsplash.photos.listPhotos(photosPage, countPhotos, 'latest')
-            .then(res => res.text())
-            .then(res => {
-                if (res != "Rate Limit Exceeded" && !JSON.parse(res).errors) 
-                    { return JSON.parse(res); }
-                else { console.error("Лимит запросов исчерпан!"); }
-            })
-    )
-}
+
   
 
 

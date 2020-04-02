@@ -11,14 +11,13 @@ const Header = ( props ) => {
 	const { userName, userLink } = props;
 	
 	return (
-			<header className="main-header">
-				<Logo />
-		        <Form userLink = { userLink } userName = { userName } />
-			</header>
+		<header className="main-header">
+			<Logo />
+	        <Form userLink = { userLink } userName = { userName } />
+		</header>
 	);
 			
 };
-
 
 
 export default Header;

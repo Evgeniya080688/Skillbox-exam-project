@@ -37,8 +37,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = ( dispatch ) => {
 	return {
-		likeImageAction: (photo, id) => dispatch(likeImageAction(photo, id)),
-		getCurrentPhoto: (photo) => dispatch(getCurrentPhoto(photo))
+		likeImageAction: (photo, id) => dispatch( likeImageAction(photo, id) ),
+		getCurrentPhoto: (photo) => dispatch( getCurrentPhoto(photo) )
 	}
 }
 
