@@ -1,9 +1,6 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { authOut } from '../store/actions';
-
-import { unsplash } from '../services/unsplash';
 
 class Home extends React.Component {
 	constructor (props) {

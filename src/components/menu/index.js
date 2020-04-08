@@ -2,19 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import AuthForm from './auth_form.js';
-import NotAuthForm from './notauth_form.js';
+import AuthMenu from './auth_menu.js';
+import NotAuthMenu from './notauth_menu.js';
 
 import { getAuth } from '../../store/actions';
 
 import './index.css';
 
-const Form = ( props ) => {
+const Menu = ( props ) => {
 	const { userName, userLink, getAuth } = props;
 
 	if (userName) {
 		return (	
-			<AuthForm 
+			<AuthMenu 
 				userLink = { userLink }
 				userName = { userName }
 			/>	        
@@ -22,7 +22,7 @@ const Form = ( props ) => {
 	}
 	else {
 		return (
-			<NotAuthForm 
+			<NotAuthMenu
 				getAuth = { getAuth }
 			/>
 		)
@@ -30,10 +30,11 @@ const Form = ( props ) => {
 			
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = ( state ) => {
+	const { userName, userLink } = state;
 	return {
-	    userLink: state.userLink,
-	    userName: state.userName
+	    userLink,
+	    userName
 	}
 }
 
@@ -46,4 +47,4 @@ const mapDispatchToProps = ( dispatch ) => {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(Form);
+)(Menu);

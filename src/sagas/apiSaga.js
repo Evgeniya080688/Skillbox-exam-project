@@ -36,9 +36,6 @@ function getAuth() {
                 if (JSON.stringify(json) && JSON.stringify(json)!= "Rate Limit Exceeded") {
                     unsplash.auth.setBearerToken(json.access_token);
                     return json.access_token;}
-                else {
-                    return console.error("Лимит запросов исчерпан!");
-                }
             }
         });
 }

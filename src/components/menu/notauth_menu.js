@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './index.css';
 
-const NotAuthForm = (props) => {
+const NotAuthMenu = (props) => {
 	const { getAuth } = props;
 
 	return (    
@@ -21,5 +21,5 @@ const NotAuthForm = (props) => {
 			
 };
 
-export default NotAuthForm;
+export default NotAuthMenu;
 

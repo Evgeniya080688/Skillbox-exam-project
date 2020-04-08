@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './index.css';
 
-const AuthForm = (props) => {
+const AuthMenu = (props) => {
 	const { userName, userLink } = props;
 	const link = "https://unsplash.com/@" + userLink;
 
@@ -32,4 +32,4 @@ const AuthForm = (props) => {
 			
 };
 
-export default AuthForm;
+export default AuthMenu;

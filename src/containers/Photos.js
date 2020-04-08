@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getPhotos, getMorePhotos, likeImageAction, getCurrentPhoto, loadingControl } from '../store/actions';
+import { infinityScroll } from '../services/helpers.js'
 
 import PhotoList from '../components/photos/PhotoList';
 import LoadMore from '../components/buttons/LoadMore';
@@ -15,19 +16,12 @@ class Photos extends React.Component {
     }
 
 	componentDidMount() {
-		window.addEventListener('scroll', function() {
-            let scrolled = window.pageYOffset || document.documentElement.scrollTop;
-            if (window.innerHeight + scrolled >= document.body.clientHeight - 300) {
-       			const loadingPhotos = store.getState().loadingPhotos;
-                if (!loadingPhotos) {
-                	store.dispatch(loadingControl());
-                	store.dispatch(getMorePhotos());		    
-                }
-              
-            }
-		} );	
+		window.addEventListener('scroll', infinityScroll);
 	}
 
+	componentWillUnmount() {
+		window.removeEventListener('scroll', infinityScroll);
+	}
 
 	render() {	
 		const { photos, likeImageAction, getMorePhotos, getCurrentPhoto } = this.props;
@@ -44,10 +38,11 @@ class Photos extends React.Component {
 } 
 
 const mapStateToProps = state => {
+	const { photos, token, loadingPhotos } = state;
 	return {
-	    photos: state.photos,
-	    token: state.token,
-	    loadingPhotos: state.loadingPhotos
+	    photos,
+	    token,
+	    loadingPhotos
 	}
 }
 
