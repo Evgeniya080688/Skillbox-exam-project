@@ -1,0 +1,1 @@
+export const unsplushUrl = "https://unsplash.com/";

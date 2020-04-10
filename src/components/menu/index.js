@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import AuthMenu from './auth_menu.js';
@@ -10,9 +9,9 @@ import { getAuth } from '../../store/actions';
 import './index.css';
 
 const Menu = ( props ) => {
-	const { userName, userLink, getAuth } = props;
+	const { userName, userLink, getAuth, token } = props;
 
-	if (userName) {
+	if ( token ) {
 		return (	
 			<AuthMenu 
 				userLink = { userLink }
@@ -31,10 +30,11 @@ const Menu = ( props ) => {
 };
 
 const mapStateToProps = ( state ) => {
-	const { userName, userLink } = state;
+	const { userName, userLink, token } = state;
 	return {
 	    userLink,
-	    userName
+	    userName,
+	    token
 	}
 }
 

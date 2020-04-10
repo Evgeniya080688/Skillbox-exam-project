@@ -5,7 +5,7 @@ import './index.css';
 
 const AuthMenu = (props) => {
 	const { userName, userLink } = props;
-	const link = "https://unsplash.com/@" + userLink;
+	const link = `https://unsplash.com/@${ userLink }`;
 
 	return (		        
     	<React.Fragment>

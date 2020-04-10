@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 import Like from '../buttons/Like';
 import { convertDate } from '../../services/helpers';
+import { unsplushUrl } from '../../services/constants';
 
 const PhotoItem = ( props ) => {	
 	const { photo, likeImageAction, getCurrentPhoto } = props;
@@ -22,7 +23,7 @@ const PhotoItem = ( props ) => {
 			    <figcaption className="photo-item__caption">
 			    	<span> Photo by&nbsp;
 	        			<a href = { user.links.html }>{ user.name }</a> on
-	        			<a href = "https://unsplash.com/">&nbsp;Unsplash</a></span>
+	        			<a href = { unsplushUrl }>&nbsp;Unsplash</a></span>
 			    	<span>{ date }</span>
 			    	<Like id = { id } likes = { likes } likeImageAction = { likeImageAction } getCurrentPhoto = { getCurrentPhoto } photo = { photo } liked_by_user = { liked_by_user } />					
 			    </figcaption>

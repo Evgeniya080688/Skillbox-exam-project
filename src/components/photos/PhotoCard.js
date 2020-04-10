@@ -4,6 +4,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 import { convertDate } from '../../services/helpers'; 
+import { unsplushUrl } from '../../services/constants';
 
 const PhotoCard = ({ photo }) => {
 	const { id, updated_at, user, urls, location, likes } = photo;
@@ -15,7 +16,7 @@ const PhotoCard = ({ photo }) => {
 				<span>
 					photo by&nbsp;
               		<a href={ user.links.html }>{ user.name }</a> on
-              		<a href="https://unsplash.com/">&nbsp;Unsplash</a>
+              		<a href={ unsplushUrl }>&nbsp;Unsplash</a>
 				</span>
 		    	<span>{ date }</span>		    	
 			</div>	
