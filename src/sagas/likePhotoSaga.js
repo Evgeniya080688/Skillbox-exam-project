@@ -10,7 +10,7 @@ export default function* watchLikePhotos() {
 function* workLikePhotos() {
     try {       
         const state = yield select();
-        const photo = state.currentPhoto;
+        const photo = state.photo.currentPhoto;
         const payload = yield call(likePhoto, photo);        
         yield put({ type: "LIKE_ADD", payload });
     } catch (e) {

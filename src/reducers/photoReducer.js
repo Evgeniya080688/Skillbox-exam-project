@@ -23,6 +23,8 @@ export default ( state = initialState, action ) => {
 				photosPage: state.photosPage+1,
 				loadingPhotos: false
 			 	}
+    case "TOKEN_LOADED":
+      return { ...state, photos: action.payload.photos }
 		case "LIKE_ADD":
 			newState.photos = state.photos.map((photo)=>{
             if(photo.id === action.payload.photo.id){

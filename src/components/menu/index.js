@@ -30,7 +30,7 @@ const Menu = ( props ) => {
 };
 
 const mapStateToProps = ( state ) => {
-	const { userName, userLink, token } = state;
+	const { userName, userLink, token } = state.auth;
 	return {
 	    userLink,
 	    userName,

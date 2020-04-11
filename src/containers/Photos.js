@@ -37,10 +37,9 @@ class Photos extends React.Component {
 } 
 
 const mapStateToProps = state => {
-	const { photos, token, loadingPhotos } = state;
+	const { photos, loadingPhotos } = state.photo;
 	return {
 	    photos,
-	    token,
 	    loadingPhotos
 	}
 }

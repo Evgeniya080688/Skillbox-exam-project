@@ -24,12 +24,6 @@ class Home extends React.Component {
 	}
 }	
 
-const mapStateToProps = state => {
-	return {
-	    
-	}
-}
-
 const mapDispatchToProps = ( dispatch ) => {
 	return {
 		authOut: () => dispatch( authOut() ),
@@ -37,7 +31,7 @@ const mapDispatchToProps = ( dispatch ) => {
 }
 
 export default connect(
-	mapStateToProps,
+	null,
 	mapDispatchToProps
 )(Home);
 

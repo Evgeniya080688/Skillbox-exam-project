@@ -39,12 +39,6 @@ class App extends React.Component {
 	}
 }  
 
-const mapStateToProps = state => {
-	return {
-		
-	}
-}
-
 const mapDispatchToProps = ( dispatch ) => {
 	return {
 		getAuth: () => dispatch(getAuth()),
@@ -52,7 +46,7 @@ const mapDispatchToProps = ( dispatch ) => {
 }
 
 export default connect(
-	mapStateToProps,
+	null,
 	mapDispatchToProps
 )(App);
 

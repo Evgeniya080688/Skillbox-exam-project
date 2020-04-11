@@ -10,8 +10,8 @@ export function* watchGetPhotos() {
 function* workGetPhotos() {
     try {       
         const state = yield select();
-        const countPhotos = state.countPhotos;
-        const photosPage = state.photosPage;
+        const countPhotos = state.photo.countPhotos;
+        const photosPage = state.photo.photosPage;
         const payload = yield call(getPhotos, photosPage, countPhotos);        
         yield put({ type: "PHOTOS_LOADED", payload });
     } catch (e) {
@@ -28,8 +28,8 @@ export function* watchGetMorePhotos() {
 function* workGetMorePhotos() {
     try {       
         const state = yield select();
-        const countPhotos = state.countPhotos;
-        const photosPage = state.photosPage+1;
+        const countPhotos = state.photo.countPhotos;
+        const photosPage = state.photo.photosPage+1;
         const payload = yield call(getPhotos, photosPage, countPhotos);        
         yield put({ type: "MORE_PHOTOS_LOADED", payload });
     } catch (e) {

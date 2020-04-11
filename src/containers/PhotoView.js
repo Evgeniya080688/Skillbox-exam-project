@@ -29,7 +29,7 @@ let PhotoView = ( { match, history, photos, likeImageAction, getCurrentPhoto } )
 }
 
 const mapStateToProps = state => {
-	const { photos } = state;
+	const { photos } = state.photo;
 	return {
 	    photos
 	}

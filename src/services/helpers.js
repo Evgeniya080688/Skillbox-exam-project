@@ -12,7 +12,7 @@ export function convertDate(yourDate) {
 export function infinityScroll() {
     	let scrolled = window.pageYOffset || document.documentElement.scrollTop;
             if (window.innerHeight + scrolled >= document.body.clientHeight - 300) {
-       			const loadingPhotos = store.getState().loadingPhotos;
+       			const loadingPhotos = store.getState().photo.loadingPhotos;
                 if (!loadingPhotos) {
                 	store.dispatch(loadingControl());
                 	store.dispatch(getMorePhotos());		    
