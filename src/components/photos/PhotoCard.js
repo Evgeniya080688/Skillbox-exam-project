@@ -7,7 +7,7 @@ import { convertDate } from '../../services/helpers';
 import { unsplushUrl } from '../../services/constants';
 
 const PhotoCard = ({ photo }) => {
-	const { id, updated_at, user, urls, location, likes } = photo;
+	const { updated_at, user, urls, location } = photo;
 	const date = convertDate( updated_at );
 
 	return (			

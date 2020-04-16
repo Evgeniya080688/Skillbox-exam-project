@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { likeImageAction, getCurrentPhoto } from '../../store/actions';
 
 const Like = ( props ) => {
-    const { id, likes, photo, likeImageAction, getCurrentPhoto, liked_by_user } = props;
+    const { id, likes, liked_by_user, photo, likeImageAction, getCurrentPhoto } = props;
     
 	return (			
 		<React.Fragment>
