@@ -1,7 +1,8 @@
 import './index.css';
-
 import React from 'react';
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux';
+import { likeImageAction, getCurrentPhoto } from '../../store/actions';
 
 const Like = ( props ) => {
     const { id, likes, photo, likeImageAction, getCurrentPhoto, liked_by_user } = props;
@@ -25,5 +26,14 @@ const Like = ( props ) => {
 	);
 }
 
-
-export default Like;
+const mapDispatchToProps = ( dispatch ) => {
+    return {
+        likeImageAction: (photo, id) => dispatch( likeImageAction(photo, id) ),
+        getCurrentPhoto: (photo) => dispatch( getCurrentPhoto(photo) ),
+    }
+}
+        
+export default connect(
+    null,
+    mapDispatchToProps
+)(Like);

@@ -1,11 +1,8 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getPhotos, likeImageAction, getCurrentPhoto } from '../store/actions';
 import { infinityScroll } from '../services/helpers.js'
 
 import PhotoList from '../components/photos/PhotoList';
-import LoadMore from '../components/buttons/LoadMore';
 
 import { unsplash } from '../services/unsplash';
 
@@ -23,12 +20,12 @@ class Photos extends React.Component {
 	}
 
 	render() {	
-		const { photos, likeImageAction, getCurrentPhoto } = this.props;
+		const { photos } = this.props;
 
 		return (
 			<React.Fragment>			
 			    <div className = "photos"> 	        	
-			    	<PhotoList photos = { photos }  likeImageAction = { likeImageAction }  getCurrentPhoto = { getCurrentPhoto } />  		
+			    	<PhotoList photos = { photos }  />  		
 		      	</div> 	
 	     	</React.Fragment> 
 			)	
@@ -37,25 +34,13 @@ class Photos extends React.Component {
 } 
 
 const mapStateToProps = state => {
-	const { photos, loadingPhotos } = state.photo;
+	const { photos } = state.photo;
 	return {
-	    photos,
-	    loadingPhotos
+	    photos
 	}
 }
-
-const mapDispatchToProps = ( dispatch ) => {
-	return {
-		getPhotos: () => dispatch( getPhotos() ),
-		likeImageAction: (photo, id) => dispatch( likeImageAction(photo, id) ),
-		getCurrentPhoto: (photo) => dispatch( getCurrentPhoto(photo) ),
-		loadingControl: () => dispatch( loadingControl() )
-	}
-}
-
 
 export default connect(
-	mapStateToProps,
-	mapDispatchToProps
+	mapStateToProps
 )(Photos);
 

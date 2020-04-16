@@ -8,7 +8,7 @@ import { convertDate } from '../../services/helpers';
 import { unsplushUrl } from '../../services/constants';
 
 const PhotoItem = ( props ) => {	
-	const { photo, likeImageAction, getCurrentPhoto } = props;
+	const { photo } = props;
 	const { id, urls, description, likes, user, updated_at, liked_by_user } = props.photo;
 	const date = convertDate( updated_at );
 
@@ -25,7 +25,7 @@ const PhotoItem = ( props ) => {
 	        			<a href = { user.links.html }>{ user.name }</a> on
 	        			<a href = { unsplushUrl }>&nbsp;Unsplash</a></span>
 			    	<span>{ date }</span>
-			    	<Like id = { id } likes = { likes } likeImageAction = { likeImageAction } getCurrentPhoto = { getCurrentPhoto } photo = { photo } liked_by_user = { liked_by_user } />					
+			    	<Like id = { id } likes = { likes } liked_by_user = { liked_by_user } photo = { photo }  />					
 			    </figcaption>
 		   	</figure>	
 		</li>
